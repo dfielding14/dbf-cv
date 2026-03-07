@@ -29,6 +29,7 @@ PROFILE_PATH = DATA_DIR / "profile.yaml"
 SECTIONS_PATH = DATA_DIR / "sections.yaml"
 ADVISEES_PATH = DATA_DIR / "advisees.yaml"
 PUBLICATION_RULES_PATH = DATA_DIR / "publication_rules.yaml"
+WEBSITE_SYNC_PATH = DATA_DIR / "website_sync.yaml"
 
 ADS_SNAPSHOT_PATH = CACHE_DIR / "ads_snapshot.json"
 CURATED_PUBLICATIONS_PATH = CACHE_DIR / "publications_curated.json"

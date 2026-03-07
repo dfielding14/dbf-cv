@@ -1,0 +1,15 @@
+website_repo_slug: dfielding14/dfielding14.github.io
+target_branch: master
+site_data_path: _data/site.yml
+timezone: America/New_York
+pdf_targets:
+  full: files/DBF_CV.pdf
+  summary_only: files/DBF_CV_nopubs.pdf
+  publications: files/DBF_CV-Publist.pdf
+expected_document_urls:
+  cv: /files/DBF_CV.pdf
+  cv_no_publications: /files/DBF_CV_nopubs.pdf
+  publication_list: /files/DBF_CV-Publist.pdf
+last_updated_keys:
+  cv: cv
+  publications: publications

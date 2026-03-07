@@ -85,6 +85,14 @@ Regenerate audits without PDFs:
 python -m dbf_cv audit
 ```
 
+Sync the generated PDFs into a local checkout of the website repo:
+
+```bash
+python -m dbf_cv publish-website --website-repo /path/to/dfielding14.github.io
+```
+
+If any of the three PDF outputs are missing, this command builds the bundled-font variants first.
+
 Build and render PNG previews for visual inspection:
 
 ```bash
@@ -149,6 +157,20 @@ This file controls:
 - promoted conference papers
 - ORCID reconciliation
 
+### Website publishing contract
+
+Edit [`data/website_sync.yaml`](data/website_sync.yaml) only if the website repo changes its PDF paths or `_data/site.yml` structure.
+
+The publish command intentionally validates:
+
+- `documents.cv`
+- `documents.cv_no_publications`
+- `documents.publication_list`
+- `last_updated.cv`
+- `last_updated.publications`
+
+If the website contract drifts, the command fails instead of writing partial updates.
+
 ## Outputs
 
 After a build, the key outputs are:
@@ -166,3 +188,4 @@ After a build, the key outputs are:
 - ADS is the canonical citation source for per-paper counts, total citations, and h-index.
 - Google Scholar is not scraped automatically.
 - `cache/`, `build/`, and `output/` are intentionally untracked.
+- `.github/workflows/publish-website.yml` is the weekly website sync; it requires `ADS_DEV_KEY` and `WEBSITE_PUSH_TOKEN`.

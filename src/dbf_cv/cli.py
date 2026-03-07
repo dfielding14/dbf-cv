@@ -26,6 +26,7 @@ from .paths import (
 )
 from .publications import generate_publication_artifacts
 from .render import generate_static_tex
+from .website import load_sync_config, required_variants, sync_website_repo
 
 
 VARIANT_ALIASES = {
@@ -228,6 +229,47 @@ def print_artifact_summary(
         print(f"PNG previews: {RENDER_OUTPUT_DIR}")
 
 
+def ensure_publish_pdfs_exist(args: argparse.Namespace, variants: list[str]) -> None:
+    missing = [variant for variant in variants if not VARIANT_TO_PDF[variant].exists()]
+    if not missing:
+        return
+
+    latexmk_cmd = resolve_command(args.latexmk)
+    print_step("[1/2] Missing website PDFs detected; building bundled-font outputs")
+    prepare_generated_files(
+        font_profile="bundled",
+        skip_ads_refresh=args.skip_ads_refresh,
+        max_age_hours=args.max_age_hours,
+    )
+    print_step("[2/2] Building required PDF variants")
+    for variant in variants:
+        print_step(f"  - {variant}")
+        build_variant(variant, latexmk_cmd)
+
+
+def run_publish_website(args: argparse.Namespace) -> int:
+    config = load_sync_config()
+    variants = required_variants(config)
+
+    ensure_publish_pdfs_exist(args, variants)
+
+    print_step("[1/1] Syncing PDFs and dates into the website repo")
+    result = sync_website_repo(Path(args.website_repo), config)
+
+    if result["changed"]:
+        print("Website sync complete.")
+        print(f"Updated website repo: {result['website_repo']}")
+        print(f"Last updated date: {result['display_date']}")
+        print("Changed files:")
+        for path in result["changed_files"]:
+            print(f"- {path}")
+    else:
+        print("Website sync complete. No changes were needed.")
+        print(f"Website repo: {result['website_repo']}")
+        print(f"Last updated date: {result['display_date']}")
+    return 0
+
+
 def add_generation_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--skip-ads-refresh",
@@ -301,6 +343,33 @@ def build_parser() -> argparse.ArgumentParser:
     )
     render_cmd.set_defaults(command="render-check")
 
+    publish_cmd = subparsers.add_parser(
+        "publish-website",
+        help="Copy generated PDFs into the website repo and update _data/site.yml dates.",
+    )
+    publish_cmd.add_argument(
+        "--skip-ads-refresh",
+        action="store_true",
+        help="Reuse the existing cache/ads_snapshot.json if PDFs need to be built first.",
+    )
+    publish_cmd.add_argument(
+        "--max-age-hours",
+        type=float,
+        default=24.0,
+        help="Maximum allowed age for the ADS snapshot when reusing cached data.",
+    )
+    publish_cmd.add_argument(
+        "--website-repo",
+        required=True,
+        help="Path to the local checkout of dfielding14.github.io.",
+    )
+    publish_cmd.add_argument(
+        "--latexmk",
+        default="latexmk",
+        help="latexmk executable or absolute path when PDFs need to be built first.",
+    )
+    publish_cmd.set_defaults(command="publish-website")
+
     return parser
 
 
@@ -337,7 +406,15 @@ def main(argv: list[str] | None = None) -> int:
     args_list = list(sys.argv[1:] if argv is None else argv)
     if not args_list:
         args_list = ["build"]
-    elif args_list[0] not in {"build", "refresh-pubs", "audit", "render-check", "-h", "--help"}:
+    elif args_list[0] not in {
+        "build",
+        "refresh-pubs",
+        "audit",
+        "render-check",
+        "publish-website",
+        "-h",
+        "--help",
+    }:
         args_list = ["build", *args_list]
 
     args = parser.parse_args(args_list)
@@ -362,6 +439,8 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "render-check":
             return run_build(args, render_check=True)
+        if args.command == "publish-website":
+            return run_publish_website(args)
         return run_build(args, render_check=False)
     except (CommandError, RuntimeError, ValueError) as exc:
         print(f"Error: {exc}", file=sys.stderr)

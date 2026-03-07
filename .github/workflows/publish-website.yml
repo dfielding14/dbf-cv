@@ -1,0 +1,99 @@
+name: publish-website
+
+on:
+  schedule:
+    - cron: "0 14 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
+      WEBSITE_PUSH_TOKEN: ${{ secrets.WEBSITE_PUSH_TOKEN }}
+      WEBSITE_REPOSITORY: dfielding14/dfielding14.github.io
+      WEBSITE_BRANCH: master
+    steps:
+      - name: Check required secrets
+        shell: bash
+        run: |
+          if [ -z "${ADS_DEV_KEY}" ]; then
+            echo "ADS_DEV_KEY is required for weekly CV publishing." >&2
+            exit 1
+          fi
+          if [ -z "${WEBSITE_PUSH_TOKEN}" ]; then
+            echo "WEBSITE_PUSH_TOKEN is required for weekly CV publishing." >&2
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python package
+        run: python -m pip install -e .
+
+      - name: Install TeX dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk texlive-luatex texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
+
+      - name: Build bundled-font PDFs
+        run: python -m dbf_cv build --font-profile bundled
+
+      - name: Checkout website repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.WEBSITE_REPOSITORY }}
+          ref: ${{ env.WEBSITE_BRANCH }}
+          path: website
+          token: ${{ secrets.WEBSITE_PUSH_TOKEN }}
+          fetch-depth: 0
+
+      - name: Publish PDFs into website repo
+        run: python -m dbf_cv publish-website --website-repo website
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: false
+
+      - name: Install website Ruby dependencies
+        working-directory: website
+        run: bundle install
+
+      - name: Build website
+        working-directory: website
+        run: bundle exec jekyll build
+
+      - name: Validate website
+        working-directory: website
+        run: ruby scripts/validate_site.rb
+
+      - name: Commit and push website updates
+        working-directory: website
+        shell: bash
+        run: |
+          if [ -z "$(git status --short)" ]; then
+            echo "No website changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add files/DBF_CV.pdf files/DBF_CV_nopubs.pdf files/DBF_CV-Publist.pdf _data/site.yml
+
+          if [ -z "$(git diff --cached --name-only)" ]; then
+            echo "No tracked website changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Weekly CV refresh ($(TZ=America/New_York date +%F))"
+          git pull --rebase origin "${WEBSITE_BRANCH}"
+          git push origin HEAD:"${WEBSITE_BRANCH}"
