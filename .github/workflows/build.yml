@@ -18,8 +18,9 @@ jobs:
         run: python -m unittest discover -s tests
 
   build-pdfs:
-    if: ${{ secrets.ADS_DEV_KEY != '' }}
     runs-on: ubuntu-latest
+    env:
+      ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,16 +28,29 @@ jobs:
           python-version: "3.12"
       - name: Install Python package
         run: python -m pip install -e .
+      - name: Check ADS secret
+        id: ads
+        shell: bash
+        run: |
+          if [ -n "${ADS_DEV_KEY}" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Install TeX dependencies
+        if: steps.ads.outputs.available == 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y latexmk texlive-luatex texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
       - name: Build bundled-font PDFs
-        env:
-          ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
-        run: python -m fielding_cv build --font-profile bundled
+        if: steps.ads.outputs.available == 'true'
+        run: python -m dbf_cv build --font-profile bundled
       - name: Upload PDFs
+        if: steps.ads.outputs.available == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: fielding-cv-pdfs
+          name: dbf-cv-pdfs
           path: output/pdf/*.pdf
+      - name: Skip PDF build
+        if: steps.ads.outputs.available != 'true'
+        run: echo "ADS_DEV_KEY is not configured; skipping PDF build."
