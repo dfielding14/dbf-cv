@@ -36,11 +36,16 @@ python -m pip install -e .
 2. Install LuaLaTeX tooling:
 
 ```bash
-brew install poppler
 brew install --cask mactex-no-gui
 ```
 
-3. Configure ADS:
+3. Install Poppler only if you want PNG preview rendering via `render-check`:
+
+```bash
+brew install poppler
+```
+
+4. Configure ADS:
 
 ```bash
 export ADS_DEV_KEY=your_ads_token_here
