@@ -1,0 +1,35 @@
+allowed_doctypes:
+  - article
+  - eprint
+
+author_aliases:
+  auto_include:
+    - Fielding, Drummond
+    - Fielding, Drummond B.
+    - Fielding, D. B.
+  position_match:
+    - Fielding, Drummond
+    - Fielding, Drummond B.
+    - Fielding, D. B.
+    - Fielding, D.
+  query:
+    - Fielding, Drummond
+    - Fielding, Drummond B.
+    - Fielding, D. B.
+    - Fielding, D.
+
+exclude_overrides: {}
+
+excluded_publications:
+  - Bulletin of the American Astronomical Society
+
+include_overrides:
+  2020ApJ...905...14B:
+    force_include: true
+    reason: Real publication with abbreviated ADS author formatting.
+
+manual_records: []
+
+orcid: 0000-0003-3806-8548
+
+promoted_ml_conference_papers: {}

@@ -1,0 +1,38 @@
+\providecommand{\cvdoctitle}{Curriculum Vitae}
+\providecommand{\cvpublicationsectiontitle}{Publications}
+
+\documentclass[10pt, letterpaper]{cv}
+
+\input{tex/styles/preamble.tex}
+\usepackage{multicol}
+
+\begin{document}\thispagestyle{empty}\sloppy\sloppypar
+
+\input{build/generated/header.tex}
+
+\ifcvpublistonly\else
+\input{build/generated/sections.tex}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\cvpublicationsectiontitle --- \href{\adsurl}{{\it ADS search}} --- \href{\scholarurl}{{\it Google Scholar}} --- \href{\orcidurl}{{\it ORCID}}}
+\vspace{-1.5em}
+\input{build/generated/summary.tex}
+\ifcvnopublist\else
+\subsection*{First Author}
+\begin{itemize}
+    \input{build/generated/publications_first_author.tex}
+\end{itemize}
+
+\subsection*{Second Author}
+\begin{itemize}
+    \input{build/generated/publications_second_author.tex}
+\end{itemize}
+
+\subsection*{Co-author}
+\begin{itemize}
+    \input{build/generated/publications_coauthor.tex}
+\end{itemize}
+\fi
+
+\end{document}

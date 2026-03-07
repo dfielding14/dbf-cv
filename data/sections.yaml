@@ -1,0 +1,133 @@
+sections:
+  - title: Education
+    type: itemize
+    items:
+      - 'PhD 2018, MA 2014, Astrophysics, University of California, Berkeley. {\it Advisor: Eliot Quataert}'
+      - 'BS, BA 2012, Physics, Mathematics, Johns Hopkins University.'
+    after_tex: \vspace{-10pt}
+
+  - title: Professional Appointments
+    type: itemize
+    items:
+      - 'Assistant Professor, New York University, Department of Physics, Center for Cosmology and Particle Physics \hfill 2025--'
+      - 'Associate Research Scientist, Flatiron Institute, Center for Computational Astrophysics \hfill 2025--'
+      - 'Assistant Professor, Cornell University, Department of Astronomy \hfill 2024--2025'
+      - 'Flatiron Research Fellow, CCA \hfill 2018--2024'
+      - 'Visiting Scholar, Indian Institute of Science \hfill 2016'
+      - 'NSF \& Berkeley Graduate Research Fellow, U.C., Berkeley \hfill 2012--2018'
+
+  - title: Research interests
+    type: multicol_itemize
+    columns: 3
+    items:
+      - fluid dynamics
+      - plasma physics
+      - galaxy formation
+      - cosmic ray transport
+      - galactic winds
+      - circumgalactic medium
+      - magnetic turbulence
+      - multiphase flows
+      - stellar+BH feedback
+      - magnetic reconnection
+      - geom. measure theory
+      - machine learning
+
+  - title: Grants
+    type: itemize
+    items:
+      - '\emph{The Geometry of Flows}, Simons Foundation, PI, 2025--2030'
+      - '\emph{Pushing the Frontier of Cosmic Ray Transport in Interstellar Turbulence}, DOE INCITE, PI, 2025--2027'
+      - '\emph{Resolving Cosmic Ray Transport by pushing the Frontier of MHD Turbulence}, DOE INCITE, PI, 2024'
+      - '\emph{Illuminating the Interplay of Multiphase Galactic Winds and the CGM}, NSF AAG, PI'
+      - '\emph{Mocking Galactic Winds: A new approach to constraining feedback by modeling the UV spectra of galaxies}, Legacy HST-AR, Co-PI, 2025--2027'
+      - '\emph{Galactic Winds Unveiled: Leveraging Cloud Simulations with Radiative Transfer to Constrain Feedback}, Legacy HST-AR, Co-PI, 2024--2026'
+      - '\emph{Resolving Turbulent Multiphase Gas Dynamics}, EURO HPC, Co-PI, 2023--2025'
+      - '\emph{AthenaK: a Performance Portable Simulation Infrastructure for Computational Astrophysics}, NASA Support for Open-Source Tools, Frameworks, and Libraries, Co-I, 2025--2027'
+      - '\emph{DUVET: Mapping Outflows and the Inner CGM in Starbursting Disks}, KCWI, Co-I, 2020--'
+      - '\emph{Visiting scholar grant to work Indian Institute of Science with Prof. Prateek Sharma}, APS-IUSSTF, PI, 2016'
+      - '\emph{Towards an Understanding of the Origin of OVI in the Circumgalactic Medium}, HST AR, Co-I, 2017'
+      - '\emph{The Physics of Supernova Feedback: Global 3D Simulations of Galactic Disks}, NSF XSEDE, Co-I, 2016--2018'
+      - '\emph{Conduction, Convection, and Thermal Instability in Hot Halos}, NSF XSEDE, Co-I, 2016--2017'
+
+  - title: Advising
+    type: generated_itemize
+    input: build/generated/advising.tex
+    new_page_before: true
+
+  - title: 'Professional services \& teaching'
+    type: itemize
+    items:
+      - 'Astro 1101: From New Worlds to Black Holes --- Cornell University --- 200+ undergraduates \hfill Fall 2024'
+      - 'Astro 6590: Galaxies and the Universe --- Cornell University --- graduate level \hfill Spring 2025'
+      - 'Founder and organizer of the \emph{New York Area Fluid Dynamics Meeting}, a cross-disciplinary monthly meeting of local fluid dynamicists, 2020--'
+      - 'Research Mentor, \emph{Simons-National Society of Black Physicists Scholars Program}, 2023'
+      - '\href{https://www.simonsfoundation.org/grant/flatiron-institute-center-for-computational-astrophysics-pre-doctoral-program/}{\it Flatiron Pre-Doctoral Program} graduate student mentor, 2019--2024'
+      - 'Referee: MNRAS, ApJ, ApJL, PRL'
+      - 'Proposal evaluation panelist: NSF (2020), NASA HST (2024)'
+      - 'Summer research mentor for the Cornell \emph{Nexus Scholars Program}, 2025--'
+
+  - title: Honors and awards
+    type: itemize
+    items:
+      - 'Outstanding Graduate Student Instructor Award \hfill 2014'
+      - 'NSF Graduate Research Fellowship \hfill 2014--2017'
+      - 'Berkeley Graduate Fellowship \hfill 2012--2014'
+      - 'Donald E. Kerr Award for Outstanding Physics Undergraduate \hfill 2012'
+      - 'The Phi Beta Kappa Society \hfill 2012'
+
+  - title: Public outreach
+    type: itemize
+    items:
+      - 'Founder and leader of \emph{The Astro Club}. Monthly meetings 2020--2023. \href{https://dpcms.democracyprep.org/}{Democracy Prep Charter Middle School}, Harlem, NY.'
+      - 'Astronomy career day, \href{https://dpcms.democracyprep.org/}{Democracy Prep Charter Middle School}, Harlem, NY, 2019'
+      - 'Taught a month-long series of astronomy classes to 2nd and 3rd grade students, 2017. North Oakland Community Charter School, Oakland, CA'
+      - 'UC Berkeley Astronomy Department Public Liaison, 2015'
+      - '\textit{East Bay Astronomical Society} Public Lecture, 2014, Chabot Space and Science Center'
+      - '\href{https://physicstoday.scitation.org/do/10.1063/PT.4.0003/full/}{\textit{The Berkeley Compass Project}} Summer Evening Instructor, 2013'
+
+  - title: Selected recent presentations
+    type: itemize
+    items:
+      - 'Endowed Colloquium, Niels Bohr Lecture, Niels Bohr Institute, Copenhagen (10/2024)'
+      - 'Seminar, Institute for Advanced Studies, Princeton (10/2024)'
+      - 'Colloquium, Flatiron Institute, Center for Computational Astrophysics (2/2024)'
+      - 'Invited Review, {\it New simulations for new problems in galaxy formation}, conference, Paris (12/2023)'
+      - 'Invited Talk, Salpeter Workshop on the Interstellar Medium, Cornell (12/2023)'
+      - 'Seminar, Computational Research in Boston and Beyond (CRIBB), MIT (12/2023)'
+      - 'Colloquium, Johns Hopkins University, Physics and Astronomy Department (11/2023)'
+      - 'Colloquium, Columbia University, Astronomy Department (10/2023)'
+      - 'Invited talk, {\it Interfaces and Mixing in Fluids, Plasmas, and Materials}, conference, KITP (9/2023)'
+      - 'Colloquium, Michigan State University, Physics and Astronomy Department (10/2023)'
+      - 'Invited Review, {\it MIST2023: Cosmic turbulence and Magnetic fields: physics of baryonic matter across time and scales}, conference (9/2023)'
+      - 'Invited talk, {\it CGM@ND}, conference (9/2023)'
+      - 'Invited talk, {\it New Views on Feedback \& the Baryon Cycle in Galaxies}, conference (8/2023)'
+      - 'Invited talk, {\it Modeling multiphase astrophysical systems}, conference (5/2023)'
+      - 'Invited talk, {\it Jim''s Fest/Athena++}, conference (5/2023)'
+      - 'Colloquium, Yale University, Astronomy Department (2/2023)'
+      - 'Colloquium, Cornell University, Astronomy Department (1/2023)'
+      - 'Invited Astrophysics Seminar, UIUC (11/2022)'
+      - 'Joint Astrophysics Colloquium, Pitt-CMU (10/2022)'
+      - 'Invited talk, {\it What Matter(s) Around Galaxies}, conference (9/2022)'
+      - 'Invited talk, {\it Ringberg Computational Galaxy Formation 2022}, conference (4/2022)'
+      - 'Invited talk, {\it Wolfe Symposium}, conference (3/2022)'
+      - 'Invited Seminar, Theoretical AstroPhysics Including Relativity \& Cosmology, Caltech (12/2021)'
+      - 'Astronomy Department seminar, Racah Institute of Physics, Hebrew University of Jerusalem (12/2021)'
+      - 'Invited Talk, {\it Baltimore Wind Workshop}, Johns Hopkins University (8/2021)'
+      - 'Astrophysics Colloquium, UCSD-SDSU (4/2021)'
+      - '\href{https://dfielding14.github.io/talks/}{Keynote speaker}, KITP workshop {\it Fundamentals of Gaseous Halos} (1/2021)'
+      - 'Invited talk, KITP conference {\it On the Origin, Nature, and Mixing of Multiphase Gas in Astrophysics} (10/2020)'
+      - 'Gaggle Seminar, Carnegie Institution for Science (8/2020)'
+      - 'Invited talk, CLEARNESS conference IAP (6/2020)'
+      - 'CGI Colloquium, U.C. Santa Cruz (4/2020)'
+      - 'Contributed Talk, Universality of Turbulence Conference, Flatiron Institute, NY (12/2019)'
+      - 'SFIR Seminar, Princeton University (11/2019)'
+      - 'Astro Seminar, NYU CCPP, New York, NY (10/2019)'
+      - 'Invited Talk, CGM conference, Berlin, Germany (10/2019)'
+      - 'Invited seminar, Turbulence workshop, Aspen Center for Physics (6/2019)'
+      - 'Invited Talk, {\it athena++} conference, Las Vegas, NV (3/2019)'
+      - 'Invited Talk, CGM conference, Northwestern, Chicago, IL (8/2018)'
+      - 'Invited Talk, CGM/DLA conference, Big Sur, CA (3/2018)'
+      - 'TAPIR Seminar, Caltech, Pasadena, CA (11/2017)'
+      - 'Astronomy Colloquium, Raman Research Institute (12/2016)'
+      - 'Astronomy Department Colloquium, Indian Institute of Science (10/2016)'

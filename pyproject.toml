@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dbf-cv"
+version = "0.1.0"
+description = "Build Drummond Fielding's CV and publication list variants."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "ads",
+  "PyYAML",
+]
+
+[project.scripts]
+dbf-cv = "dbf_cv.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

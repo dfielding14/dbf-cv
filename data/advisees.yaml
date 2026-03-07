@@ -1,0 +1,110 @@
+categories:
+  graduate:
+    symbol: \ddagger
+    legend: graduate student-led
+  undergraduate:
+    symbol: \mathsection
+    legend: undergraduate-led
+  postdoc:
+    symbol: \dagger
+    legend: postdoc-led
+
+advisees:
+  - name: Brent Tan
+    category: postdoc
+    role: Postdoc
+    affiliation: Cornell University and NYU
+    url: https://scholar.google.com/citations?user=J8TJmdsAAAAJ&hl=en
+    led_papers:
+      - 2024MNRAS.527.9683T
+  - name: Hitesh Das
+    category: postdoc
+    role: Postdoc
+    affiliation: NYU
+  - name: Alex Pendris
+    category: graduate
+    role: Graduate Student
+    affiliation: NYU
+  - name: Nana Ama Darpaah
+    category: graduate
+    role: Masters Student
+    affiliation: NYU
+  - name: Lillion Shi
+    category: undergraduate
+    role: Undergraduate
+    affiliation: NYU
+  - name: Yongqi Zhang
+    category: graduate
+    role: Graduate Student
+    affiliation: Cornell University
+  - name: Bodong Liu
+    category: undergraduate
+    role: Undergraduate Student
+    affiliation: Cornell University
+  - name: Iryna Butsky
+    category: graduate
+    role: Graduate Student
+    affiliation: University of Washington + CCA predoctoral fellow
+    outcome: Hubble Fellow at Stanford
+    url: https://www.irynabutsky.me/
+    led_papers:
+      - 2020ApJ...903...77B
+  - name: Viraj Pandya
+    category: graduate
+    role: Graduate Student
+    affiliation: UC Santa Cruz + CCA predoctoral fellow
+    outcome: Hubble Fellow at Columbia
+    url: https://virajpandya.github.io/
+    led_papers:
+      - 2021MNRAS.508.2979P
+      - 2023ApJ...956..118P
+  - name: Matthew Abruzzo
+    category: graduate
+    role: Graduate Student
+    affiliation: Columbia
+    outcome: Postdoc at UPitt
+    url: http://www.matthewabruzzo.com/
+    led_papers:
+      - 2022ApJ...925..199A
+      - 2023arXiv230703228A
+      - 2024ApJ...966..181A
+  - name: Anthony Chow
+    category: graduate
+    role: Graduate Student
+    affiliation: Columbia
+    url: http://www.columbia.edu/~kc3058/
+  - name: Zirui Chen
+    category: undergraduate
+    role: Undergraduate Student
+    affiliation: Columbia
+    outcome: Grad Student at UCSB
+    led_papers:
+      - 2023ApJ...950...91C
+  - name: Minami Roy
+    category: graduate
+    role: Graduate Student
+    affiliation: Raman Research Institute + CCA predoctoral fellow
+    outcome: Postdoc at OSU
+    url: https://www.rri.res.in/aa_manamiroy.html
+  - name: Mitali Damle
+    category: graduate
+    role: Graduate Student
+    affiliation: University of Potsdam
+    outcome: Postdoc at NYU Abu Dhabi
+  - name: Christopher Carr
+    category: graduate
+    show_in_advising: false
+    led_papers:
+      - 2023ApJ...949...21C
+  - name: Matthew Orr
+    category: graduate
+    show_in_advising: false
+    led_papers:
+      - 2022ApJ...924L..28O
+      - 2022ApJ...932...88O
+  - name: Rahul Ramesh
+    category: graduate
+    show_in_advising: false
+    led_papers:
+      - 2024A&A...684L..16R
+      - 2024arXiv240700172R

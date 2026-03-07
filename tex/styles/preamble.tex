@@ -1,0 +1,49 @@
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{fontawesome}
+\usepackage{datetime}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\renewcommand{\dateseparator}{-}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{\color{deemph}\cvname}
+\chead{\color{deemph}\cvdoctitle}
+\rhead{\color{deemph}\thepage}
+\cfoot{\color{deemph}Last updated: \today}
+
+\newcommand{\doi}[2]{\emph{\href{http://dx.doi.org/#1}{{#2}}}}
+\newcommand{\ads}[2]{\href{http://adsabs.harvard.edu/abs/#1}{{#2}}}
+\newcommand{\arxiv}[1]{{\href{http://arxiv.org/abs/#1}{arXiv:{#1}}}}
+
+\newcommand{\aanda}{A\&A}
+\newcommand{\aj}{AJ}
+\newcommand{\apj}{ApJ}
+\newcommand{\apjs}{ApJS}
+\newcommand{\apjl}{ApJL}
+\newcommand{\pasj}{PASJ}
+\newcommand{\pasp}{PASP}
+\newcommand{\mnras}{MNRAS}
+\newcommand{\mnrasl}{MNRAS~Letters}
+\newcommand{\nature}{Nature}
+\newcommand{\natureast}{Nature~Astronomy}
+
+\hypersetup{
+  colorlinks = true,
+  pdfkeywords = {astrophysics, astronomy, physics},
+  pdftitle = {\cvdoctitle},
+  pdfsubject = {Curriculum Vitae},
+  pdfpagemode = UseNone,
+  linkcolor = links,
+  filecolor = links,
+  urlcolor = links,
+  citecolor = links
+}
+
+\newcommand{\aiArchive}{arXiv:}
+\newcommand{\aiOrcid}{ORCID:}
