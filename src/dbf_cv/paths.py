@@ -30,6 +30,7 @@ SECTIONS_PATH = DATA_DIR / "sections.yaml"
 ADVISEES_PATH = DATA_DIR / "advisees.yaml"
 PUBLICATION_RULES_PATH = DATA_DIR / "publication_rules.yaml"
 WEBSITE_SYNC_PATH = DATA_DIR / "website_sync.yaml"
+TRACKED_ADS_SNAPSHOT_PATH = DATA_DIR / "ads_snapshot.json"
 
 ADS_SNAPSHOT_PATH = CACHE_DIR / "ads_snapshot.json"
 CURATED_PUBLICATIONS_PATH = CACHE_DIR / "publications_curated.json"
@@ -59,6 +60,8 @@ VARIANT_TO_PDF = {
     "publications": PDF_OUTPUT_DIR / "dbf-cv-publications.pdf",
     "summary_only": PDF_OUTPUT_DIR / "dbf-cv-summary-only.pdf",
 }
+
+BUILD_MANIFEST_PATH = PDF_OUTPUT_DIR / "build_manifest.json"
 
 VARIANT_BUILD_DIR = {
     "full": BUILD_DIR / "full",

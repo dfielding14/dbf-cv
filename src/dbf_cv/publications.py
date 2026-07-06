@@ -7,7 +7,7 @@ import html
 import json
 import re
 from collections import Counter, defaultdict
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 from typing import Iterable
 from urllib.error import URLError
@@ -17,6 +17,7 @@ from xml.etree import ElementTree as ET
 
 import yaml
 
+from .ads import load_snapshot
 from .paths import (
     ADVISING_TEX_PATH,
     COAUTHOR_TEX_PATH,
@@ -35,6 +36,7 @@ HIGHLY_CITED_THRESHOLD = 100
 RAW_TEX_MAP = {
     "–": "--",
     "—": "---",
+    "─": "--",
     "−": "-",
     "α": "$\\alpha$",
     "β": "$\\beta$",
@@ -770,7 +772,8 @@ def generate_publication_artifacts(
     rules_path: Path,
     advisees_path: Path,
 ) -> dict:
-    publications = load_data(publications_path)
+    ads_snapshot = load_snapshot(publications_path)
+    publications = ads_snapshot.records
     overrides = load_data(rules_path)
     advisee_manifest = load_advisee_manifest(advisees_path)
     advisee_categories, advising_entries, led_papers = build_advisee_data(advisee_manifest)
@@ -970,7 +973,7 @@ def generate_publication_artifacts(
         "total_papers": len(curated),
         "total_citations": sum(record["citations"] for record in curated),
         "h_index": compute_h_index(record["citations"] for record in curated),
-        "updated_on": date.today().isoformat(),
+        "updated_on": ads_snapshot.fetched_at.date().isoformat(),
     }
 
     scholar_metrics = overrides.get("google_scholar")
@@ -1093,6 +1096,12 @@ def generate_publication_artifacts(
 
     return {
         "ads_metrics": ads_metrics,
+        "ads_snapshot": {
+            "path": str(ads_snapshot.path),
+            "fetched_at": ads_snapshot.fetched_at.isoformat(),
+            "record_count": ads_snapshot.record_count,
+            "legacy": ads_snapshot.legacy,
+        },
         "counts_by_section": {name: len(records) for name, records in sections.items()},
         "curated_publications": curated,
         "orcid_audit": orcid_audit,

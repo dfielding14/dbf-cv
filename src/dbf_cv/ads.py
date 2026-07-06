@@ -4,10 +4,13 @@ from __future__ import annotations
 
 import json
 import os
-from datetime import datetime, timedelta
+from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import yaml
+
+SNAPSHOT_SCHEMA_VERSION = 1
 
 
 DEFAULT_FIELDS = [
@@ -25,6 +28,20 @@ DEFAULT_FIELDS = [
     "citation_count",
     "bibcode",
 ]
+
+
+@dataclass(frozen=True)
+class AdsSnapshot:
+    """ADS snapshot records plus provenance."""
+
+    records: list[dict]
+    fetched_at: datetime
+    query: str | None
+    fields: list[str]
+    record_count: int
+    path: Path
+    schema_version: int | None = SNAPSHOT_SCHEMA_VERSION
+    legacy: bool = False
 
 
 def load_rules(path: Path) -> dict:
@@ -62,6 +79,65 @@ def build_query(config: dict) -> str:
         raise ValueError("No ADS query terms configured in data/publication_rules.yaml.")
 
     return " OR ".join(query_terms)
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc).replace(microsecond=0)
+
+
+def parse_snapshot_datetime(value: str) -> datetime:
+    normalized = value.strip()
+    if normalized.endswith("Z"):
+        normalized = normalized[:-1] + "+00:00"
+    parsed = datetime.fromisoformat(normalized)
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def format_snapshot_datetime(value: datetime) -> str:
+    return value.astimezone(timezone.utc).replace(microsecond=0).isoformat().replace(
+        "+00:00", "Z"
+    )
+
+
+def snapshot_payload(
+    *,
+    records: list[dict],
+    fetched_at: datetime,
+    query: str | None,
+    fields: list[str],
+) -> dict:
+    return {
+        "schema_version": SNAPSHOT_SCHEMA_VERSION,
+        "fetched_at": format_snapshot_datetime(fetched_at),
+        "query": query,
+        "fields": list(fields),
+        "record_count": len(records),
+        "records": records,
+    }
+
+
+def write_snapshot(
+    path: Path,
+    *,
+    records: list[dict],
+    fetched_at: datetime,
+    query: str | None,
+    fields: list[str],
+) -> AdsSnapshot:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = snapshot_payload(
+        records=records,
+        fetched_at=fetched_at,
+        query=query,
+        fields=fields,
+    )
+    path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    return load_snapshot(path)
 
 
 def extract_arxiv_ids(paper) -> list[str]:
@@ -118,7 +194,7 @@ def normalize_record(paper) -> dict:
     }
 
 
-def refresh_snapshot(rules_path: Path, output_path: Path) -> list[dict]:
+def refresh_snapshot(rules_path: Path, output_path: Path) -> AdsSnapshot:
     try:
         import ads
     except ModuleNotFoundError as exc:
@@ -145,15 +221,16 @@ def refresh_snapshot(rules_path: Path, output_path: Path) -> list[dict]:
     except Exception as exc:  # pragma: no cover - depends on ADS client/network
         raise RuntimeError(f"ADS refresh failed: {exc}") from exc
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
-        json.dumps(records, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
+    return write_snapshot(
+        output_path,
+        records=records,
+        fetched_at=utc_now(),
+        query=query,
+        fields=DEFAULT_FIELDS,
     )
-    return records
 
 
-def load_snapshot(path: Path) -> list[dict]:
+def load_snapshot(path: Path) -> AdsSnapshot:
     if not path.exists():
         raise RuntimeError(f"ADS snapshot is missing: {path}")
 
@@ -162,19 +239,79 @@ def load_snapshot(path: Path) -> list[dict]:
     except json.JSONDecodeError as exc:
         raise RuntimeError(f"ADS snapshot is not valid JSON: {exc}") from exc
 
-    if not isinstance(payload, list) or not payload:
+    if isinstance(payload, list):
+        if not payload:
+            raise RuntimeError("ADS snapshot is empty; run `python -m dbf_cv refresh-pubs`.")
+        fetched_at = datetime.fromtimestamp(path.stat().st_mtime, timezone.utc)
+        return AdsSnapshot(
+            records=payload,
+            fetched_at=fetched_at,
+            query=None,
+            fields=[],
+            record_count=len(payload),
+            path=path,
+            schema_version=None,
+            legacy=True,
+        )
+
+    if not isinstance(payload, dict):
+        raise RuntimeError("ADS snapshot must be a JSON object or legacy record list.")
+
+    if payload.get("schema_version") != SNAPSHOT_SCHEMA_VERSION:
+        raise RuntimeError(
+            "Unsupported ADS snapshot schema version: "
+            f"{payload.get('schema_version')!r}."
+        )
+
+    records = payload.get("records")
+    if not isinstance(records, list) or not records:
         raise RuntimeError("ADS snapshot is empty; run `python -m dbf_cv refresh-pubs`.")
-    return payload
+
+    fetched_at = payload.get("fetched_at")
+    if not isinstance(fetched_at, str) or not fetched_at.strip():
+        raise RuntimeError("ADS snapshot is missing `fetched_at` provenance.")
+
+    fields = payload.get("fields")
+    if not isinstance(fields, list):
+        raise RuntimeError("ADS snapshot field `fields` must be a list.")
+
+    record_count = payload.get("record_count")
+    if record_count != len(records):
+        raise RuntimeError(
+            "ADS snapshot record_count does not match records length: "
+            f"{record_count!r} != {len(records)}."
+        )
+
+    return AdsSnapshot(
+        records=records,
+        fetched_at=parse_snapshot_datetime(fetched_at),
+        query=payload.get("query"),
+        fields=[str(field) for field in fields],
+        record_count=len(records),
+        path=path,
+        schema_version=SNAPSHOT_SCHEMA_VERSION,
+        legacy=False,
+    )
 
 
-def validate_snapshot_freshness(path: Path, max_age_hours: float) -> None:
-    load_snapshot(path)
-    modified_at = datetime.fromtimestamp(path.stat().st_mtime)
-    age = datetime.now() - modified_at
+def validate_snapshot_freshness(
+    path: Path,
+    max_age_hours: float,
+    *,
+    now: datetime | None = None,
+) -> AdsSnapshot:
+    snapshot = load_snapshot(path)
+    reference = now or utc_now()
+    if reference.tzinfo is None:
+        reference = reference.replace(tzinfo=timezone.utc)
+    reference = reference.astimezone(timezone.utc)
+    age = reference - snapshot.fetched_at
     max_age = timedelta(hours=max_age_hours)
     if age > max_age:
         hours_old = age.total_seconds() / 3600
         raise RuntimeError(
             f"ADS snapshot is stale: {path} was last updated at "
-            f"{modified_at:%Y-%m-%d %H:%M:%S} and is {hours_old:.1f} hours old."
+            f"{snapshot.fetched_at:%Y-%m-%d %H:%M:%S %Z} "
+            f"and is {hours_old:.1f} hours old."
         )
+    return snapshot

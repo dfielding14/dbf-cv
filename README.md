@@ -16,6 +16,7 @@ The publication pipeline refreshes ADS, reconciles against ORCID, curates the fi
 
 ```text
 data/                  human-edited source of truth
+data/ads_snapshot.json tracked last-good ADS snapshot fallback
 src/dbf_cv/            Python package and CLI
 tex/                   LuaLaTeX class, preamble, templates, variants
 assets/fonts/          redistributable fallback fonts
@@ -73,6 +74,12 @@ Reuse the current ADS snapshot:
 python -m dbf_cv build --skip-ads-refresh
 ```
 
+Build using the tracked fallback snapshot if live ADS refresh fails:
+
+```bash
+python -m dbf_cv build --font-profile bundled --fallback-snapshot data/ads_snapshot.json --promote-snapshot data/ads_snapshot.json --max-age-hours 504
+```
+
 Refresh the ADS snapshot only:
 
 ```bash
@@ -91,7 +98,9 @@ Sync the generated PDFs into a local checkout of the website repo:
 python -m dbf_cv publish-website --website-repo /path/to/dfielding14.github.io
 ```
 
-If any of the three PDF outputs are missing, this command builds the bundled-font variants first.
+The publish command validates `output/pdf/build_manifest.json` before syncing. If
+the manifest is missing, stale, incomplete, or the listed PDF hashes no longer
+match, it rebuilds the required bundled-font variants first.
 
 Build and render PNG previews for visual inspection:
 
@@ -178,6 +187,7 @@ After a build, the key outputs are:
 - `output/pdf/dbf-cv-full.pdf`
 - `output/pdf/dbf-cv-publications.pdf`
 - `output/pdf/dbf-cv-summary-only.pdf`
+- `output/pdf/build_manifest.json`
 - `cache/publications_curated.json`
 - `cache/publications_audit.json`
 - `cache/orcid_audit.json`
@@ -186,6 +196,9 @@ After a build, the key outputs are:
 ## Notes
 
 - ADS is the canonical citation source for per-paper counts, total citations, and h-index.
+- ADS snapshots are written as metadata objects with `fetched_at` provenance. The
+  CV metrics and website `last_updated` dates use the ADS snapshot date, not the
+  workflow run date.
 - Google Scholar is not scraped automatically.
 - `cache/`, `build/`, and `output/` are intentionally untracked.
-- `.github/workflows/publish-website.yml` is the weekly website sync; it requires `ADS_DEV_KEY` and `WEBSITE_PUSH_TOKEN`.
+- `.github/workflows/publish-website.yml` is the weekly website sync; it requires `ADS_DEV_KEY` and `WEBSITE_PUSH_TOKEN`. It promotes a fresh ADS snapshot into `data/ads_snapshot.json`, commits that tracked fallback if changed, and allows fallback publishing only when the tracked snapshot is at most 21 days old.

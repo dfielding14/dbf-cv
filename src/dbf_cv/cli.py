@@ -3,17 +3,21 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import os
 import shutil
 import subprocess
 import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from .ads import refresh_snapshot, validate_snapshot_freshness
+from .ads import parse_snapshot_datetime, refresh_snapshot, validate_snapshot_freshness
 from .fonts import write_font_profile
 from .paths import (
     ADS_SNAPSHOT_PATH,
     ADVISEES_PATH,
+    BUILD_MANIFEST_PATH,
     PDF_OUTPUT_DIR,
     PUBLICATION_RULES_PATH,
     RENDER_OUTPUT_DIR,
@@ -118,11 +122,166 @@ def shlex_quote(part: str | Path) -> str:
     return text
 
 
-def refresh_pubs() -> list[dict]:
+def repo_relative(path: Path) -> str:
+    resolved = Path(path).expanduser().resolve()
+    try:
+        return resolved.relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        return resolved.as_posix()
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def current_git_commit() -> str:
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=REPO_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return "unknown"
+    return result.stdout.strip() or "unknown"
+
+
+def manifest_snapshot_time(manifest: dict) -> datetime:
+    value = manifest.get("snapshot_fetched_at")
+    if not isinstance(value, str) or not value.strip():
+        raise CommandError("Build manifest is missing `snapshot_fetched_at`.")
+    return parse_snapshot_datetime(value)
+
+
+def validate_manifest_freshness(manifest: dict, max_age_hours: float) -> None:
+    fetched_at = manifest_snapshot_time(manifest)
+    age = datetime.now(timezone.utc) - fetched_at
+    max_age = timedelta(hours=max_age_hours)
+    if age > max_age:
+        hours_old = age.total_seconds() / 3600
+        raise CommandError(
+            "Build manifest snapshot is stale: "
+            f"{fetched_at:%Y-%m-%d %H:%M:%S %Z} is {hours_old:.1f} hours old."
+        )
+
+
+def write_build_manifest(
+    *,
+    variants: list[str],
+    artifacts: dict,
+    resolved_font: str,
+    fallback_used: bool,
+    output_path: Path = BUILD_MANIFEST_PATH,
+) -> dict:
+    snapshot = artifacts.get("ads_snapshot") or {}
+    fetched_at = snapshot.get("fetched_at")
+    if not isinstance(fetched_at, str) or not fetched_at.strip():
+        raise CommandError("Publication artifacts are missing ADS snapshot provenance.")
+
+    variant_payload = {}
+    for variant in variants:
+        pdf_path = VARIANT_TO_PDF[variant]
+        if not pdf_path.exists():
+            raise CommandError(f"Cannot write build manifest; PDF is missing: {pdf_path}")
+        variant_payload[variant] = {
+            "path": repo_relative(pdf_path),
+            "sha256": sha256_file(pdf_path),
+        }
+
+    payload = {
+        "schema_version": 1,
+        "built_at": datetime.now(timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z"),
+        "source_commit": current_git_commit(),
+        "snapshot_path": repo_relative(Path(snapshot.get("path", ADS_SNAPSHOT_PATH))),
+        "snapshot_fetched_at": fetched_at,
+        "snapshot_record_count": snapshot.get("record_count"),
+        "fallback_used": bool(fallback_used),
+        "font_profile": resolved_font,
+        "variants": variant_payload,
+    }
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    return payload
+
+
+def load_build_manifest(path: Path = BUILD_MANIFEST_PATH) -> dict:
+    if not path.exists():
+        raise CommandError(f"Build manifest is missing: {path}")
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise CommandError(f"Build manifest is not valid JSON: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise CommandError("Build manifest must be a JSON object.")
+    if payload.get("schema_version") != 1:
+        raise CommandError(
+            f"Unsupported build manifest schema version: {payload.get('schema_version')!r}."
+        )
+    return payload
+
+
+def validate_build_manifest(
+    variants: list[str],
+    *,
+    max_age_hours: float,
+    path: Path = BUILD_MANIFEST_PATH,
+) -> dict:
+    manifest = load_build_manifest(path)
+    validate_manifest_freshness(manifest, max_age_hours)
+
+    manifest_variants = manifest.get("variants")
+    if not isinstance(manifest_variants, dict):
+        raise CommandError("Build manifest field `variants` must be an object.")
+
+    for variant in variants:
+        entry = manifest_variants.get(variant)
+        if not isinstance(entry, dict):
+            raise CommandError(f"Build manifest is missing variant `{variant}`.")
+        expected_path = repo_relative(VARIANT_TO_PDF[variant])
+        if entry.get("path") != expected_path:
+            raise CommandError(
+                f"Build manifest path for `{variant}` is {entry.get('path')!r}; "
+                f"expected {expected_path!r}."
+            )
+        pdf_path = VARIANT_TO_PDF[variant]
+        if not pdf_path.exists():
+            raise CommandError(f"PDF listed in build manifest is missing: {pdf_path}")
+        if entry.get("sha256") != sha256_file(pdf_path):
+            raise CommandError(f"PDF hash does not match build manifest: {pdf_path}")
+
+    return manifest
+
+
+def copy_snapshot(source: Path, target: Path) -> None:
+    source = Path(source).expanduser()
+    target = Path(target).expanduser()
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+
+
+def refresh_pubs(promote_snapshot: Path | None = None) -> dict:
     print_step("[1/4] Refreshing ADS snapshot")
-    records = refresh_snapshot(PUBLICATION_RULES_PATH, ADS_SNAPSHOT_PATH)
-    print_step(f"Refreshed {len(records)} ADS records into {ADS_SNAPSHOT_PATH}.")
-    return records
+    snapshot = refresh_snapshot(PUBLICATION_RULES_PATH, ADS_SNAPSHOT_PATH)
+    print_step(f"Refreshed {len(snapshot.records)} ADS records into {ADS_SNAPSHOT_PATH}.")
+    if promote_snapshot is not None:
+        copy_snapshot(ADS_SNAPSHOT_PATH, promote_snapshot)
+        print_step(f"Promoted ADS snapshot into {Path(promote_snapshot).expanduser()}.")
+    return {
+        "snapshot": snapshot,
+        "fallback_used": False,
+    }
 
 
 def prepare_generated_files(
@@ -130,7 +289,9 @@ def prepare_generated_files(
     font_profile: str,
     skip_ads_refresh: bool,
     max_age_hours: float,
-) -> tuple[str, dict]:
+    fallback_snapshot: Path | None = None,
+    promote_snapshot: Path | None = None,
+) -> tuple[str, dict, bool]:
     ensure_runtime_directories()
 
     print_step("[1/4] Selecting font profile")
@@ -140,8 +301,20 @@ def prepare_generated_files(
     if skip_ads_refresh:
         print_step("[2/4] Validating ADS snapshot freshness")
     else:
-        refresh_pubs()
+        try:
+            refresh_result = refresh_pubs(promote_snapshot)
+            fallback_used = bool(refresh_result["fallback_used"])
+        except RuntimeError as exc:
+            if fallback_snapshot is None:
+                raise
+            print_step(f"ADS refresh failed: {exc}")
+            print_step(f"Trying fallback ADS snapshot: {Path(fallback_snapshot).expanduser()}")
+            validate_snapshot_freshness(Path(fallback_snapshot).expanduser(), max_age_hours)
+            copy_snapshot(Path(fallback_snapshot).expanduser(), ADS_SNAPSHOT_PATH)
+            fallback_used = True
         print_step("[2/4] Validating ADS snapshot freshness")
+    if skip_ads_refresh:
+        fallback_used = False
     validate_snapshot_freshness(ADS_SNAPSHOT_PATH, max_age_hours)
 
     print_step("[3/4] Rendering static TeX fragments")
@@ -153,7 +326,7 @@ def prepare_generated_files(
         PUBLICATION_RULES_PATH,
         ADVISEES_PATH,
     )
-    return resolved_font, artifacts
+    return resolved_font, artifacts, fallback_used
 
 
 def build_variant(variant: str, latexmk_cmd: str) -> Path:
@@ -229,32 +402,48 @@ def print_artifact_summary(
         print(f"PNG previews: {RENDER_OUTPUT_DIR}")
 
 
-def ensure_publish_pdfs_exist(args: argparse.Namespace, variants: list[str]) -> None:
-    missing = [variant for variant in variants if not VARIANT_TO_PDF[variant].exists()]
-    if not missing:
-        return
-
+def build_required_publish_pdfs(args: argparse.Namespace, variants: list[str]) -> dict:
     latexmk_cmd = resolve_command(args.latexmk)
-    print_step("[1/2] Missing website PDFs detected; building bundled-font outputs")
-    prepare_generated_files(
+    print_step("[1/2] Building bundled-font website PDFs")
+    resolved_font, artifacts, fallback_used = prepare_generated_files(
         font_profile="bundled",
         skip_ads_refresh=args.skip_ads_refresh,
         max_age_hours=args.max_age_hours,
+        fallback_snapshot=args.fallback_snapshot,
+        promote_snapshot=args.promote_snapshot,
     )
     print_step("[2/2] Building required PDF variants")
     for variant in variants:
         print_step(f"  - {variant}")
         build_variant(variant, latexmk_cmd)
+    return write_build_manifest(
+        variants=variants,
+        artifacts=artifacts,
+        resolved_font=resolved_font,
+        fallback_used=fallback_used,
+    )
+
+
+def ensure_publish_pdfs_exist(args: argparse.Namespace, variants: list[str]) -> dict:
+    try:
+        return validate_build_manifest(variants, max_age_hours=args.max_age_hours)
+    except CommandError as exc:
+        print_step(f"Build manifest is not usable for website publishing: {exc}")
+        return build_required_publish_pdfs(args, variants)
 
 
 def run_publish_website(args: argparse.Namespace) -> int:
     config = load_sync_config()
     variants = required_variants(config)
 
-    ensure_publish_pdfs_exist(args, variants)
+    manifest = ensure_publish_pdfs_exist(args, variants)
 
     print_step("[1/1] Syncing PDFs and dates into the website repo")
-    result = sync_website_repo(Path(args.website_repo), config)
+    result = sync_website_repo(
+        Path(args.website_repo),
+        config,
+        when=manifest_snapshot_time(manifest),
+    )
 
     if result["changed"]:
         print("Website sync complete.")
@@ -287,6 +476,16 @@ def add_generation_arguments(parser: argparse.ArgumentParser) -> None:
         choices=["auto", "bundled", "gt-america"],
         default="auto",
         help="Preferred font profile for LuaLaTeX builds.",
+    )
+    parser.add_argument(
+        "--fallback-snapshot",
+        type=Path,
+        help="Use this ADS snapshot if a live ADS refresh fails.",
+    )
+    parser.add_argument(
+        "--promote-snapshot",
+        type=Path,
+        help="Copy a successful live ADS refresh to this tracked snapshot path.",
     )
 
 
@@ -368,6 +567,16 @@ def build_parser() -> argparse.ArgumentParser:
         default="latexmk",
         help="latexmk executable or absolute path when PDFs need to be built first.",
     )
+    publish_cmd.add_argument(
+        "--fallback-snapshot",
+        type=Path,
+        help="Use this ADS snapshot if a live ADS refresh is needed and fails.",
+    )
+    publish_cmd.add_argument(
+        "--promote-snapshot",
+        type=Path,
+        help="Copy a successful live ADS refresh to this tracked snapshot path.",
+    )
     publish_cmd.set_defaults(command="publish-website")
 
     return parser
@@ -378,16 +587,25 @@ def run_build(args: argparse.Namespace, *, render_check: bool) -> int:
     latexmk_cmd = resolve_command(args.latexmk)
     pdftoppm_cmd = resolve_command(args.pdftoppm) if render_check else None
 
-    resolved_font, artifacts = prepare_generated_files(
+    resolved_font, artifacts, fallback_used = prepare_generated_files(
         font_profile=args.font_profile,
         skip_ads_refresh=args.skip_ads_refresh,
         max_age_hours=args.max_age_hours,
+        fallback_snapshot=args.fallback_snapshot,
+        promote_snapshot=args.promote_snapshot,
     )
 
     print_step("[5/5] Building PDF variants")
     for variant in variants:
         print_step(f"  - {variant}")
         build_variant(variant, latexmk_cmd)
+
+    write_build_manifest(
+        variants=variants,
+        artifacts=artifacts,
+        resolved_font=resolved_font,
+        fallback_used=fallback_used,
+    )
 
     if render_check and pdftoppm_cmd is not None:
         render_variant_previews(variants, pdftoppm_cmd)
@@ -425,10 +643,12 @@ def main(argv: list[str] | None = None) -> int:
             refresh_pubs()
             return 0
         if args.command == "audit":
-            resolved_font, artifacts = prepare_generated_files(
+            resolved_font, artifacts, _ = prepare_generated_files(
                 font_profile=args.font_profile,
                 skip_ads_refresh=args.skip_ads_refresh,
                 max_age_hours=args.max_age_hours,
+                fallback_snapshot=args.fallback_snapshot,
+                promote_snapshot=args.promote_snapshot,
             )
             print_artifact_summary(
                 variants=None,

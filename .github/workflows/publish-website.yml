@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   publish:
@@ -44,7 +44,22 @@ jobs:
           sudo apt-get install -y latexmk texlive-luatex texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
 
       - name: Build bundled-font PDFs
-        run: python -m dbf_cv build --font-profile bundled
+        run: python -m dbf_cv build --font-profile bundled --fallback-snapshot data/ads_snapshot.json --promote-snapshot data/ads_snapshot.json --max-age-hours 504
+
+      - name: Commit promoted ADS snapshot
+        shell: bash
+        run: |
+          if [ -z "$(git status --short -- data/ads_snapshot.json)" ]; then
+            echo "No ADS snapshot changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/ads_snapshot.json
+          git commit -m "Update ADS snapshot ($(TZ=America/New_York date +%F))"
+          git push origin HEAD:main
 
       - name: Checkout website repo
         uses: actions/checkout@v4
@@ -56,7 +71,7 @@ jobs:
           fetch-depth: 0
 
       - name: Publish PDFs into website repo
-        run: python -m dbf_cv publish-website --website-repo website
+        run: python -m dbf_cv publish-website --website-repo website --max-age-hours 504
 
       - uses: ruby/setup-ruby@v1
         with:
