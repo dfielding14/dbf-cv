@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-06T14:50:21Z",
+  "fetched_at": "2026-07-12T14:51:04Z",
   "fields": [
     "id",
     "title",
@@ -16,8 +16,33 @@
     "bibcode"
   ],
   "query": "orcid:\"0000-0003-3806-8548\" OR author:\"Fielding, Drummond\" OR author:\"Fielding, Drummond B.\" OR author:\"Fielding, D. B.\" OR author:\"Fielding, D.\"",
-  "record_count": 161,
+  "record_count": 162,
   "records": [
+    {
+      "arxiv": "2511.03793",
+      "authors": [
+        "Sankar, Sriram",
+        "Stern, Jonathan",
+        "Power, Chris",
+        "Catinella, Barbara",
+        "Fielding, Drummond",
+        "Faucher-Giguère, Claude-André",
+        "Sultan, Imran",
+        "Boylan-Kolchin, Michael",
+        "Bland-Hawthorn, Joss"
+      ],
+      "bibcode": "2026MNRAS.549g1059S",
+      "citations": 4,
+      "doctype": "article",
+      "doi": "10.1093/mnras/stag1059",
+      "page": "stag1059",
+      "pub": "Monthly Notices of the Royal Astronomical Society",
+      "pubdate": "2026-07-00",
+      "title": "Hot accretion onto spiral galaxies: the origin of extended and warped H I discs",
+      "url": "http://adsabs.harvard.edu/abs/2026MNRAS.549g1059S",
+      "volume": "549",
+      "year": "2026"
+    },
     {
       "arxiv": "2606.11323",
       "authors": [
@@ -90,7 +115,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2026arXiv260604087L",
-      "citations": 0,
+      "citations": 1,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2606.04087",
       "page": null,
@@ -98,31 +123,6 @@
       "pubdate": "2026-06-00",
       "title": "Ceci n'est pas une Couche de Mélange: The Meaning of Resolved Turbulent Radiative Mixing",
       "url": "http://adsabs.harvard.edu/abs/2026arXiv260604087L",
-      "volume": null,
-      "year": "2026"
-    },
-    {
-      "arxiv": "2511.03793",
-      "authors": [
-        "Sankar, Sriram",
-        "Stern, Jonathan",
-        "Power, Chris",
-        "Catinella, Barbara",
-        "Fielding, Drummond",
-        "Faucher-Giguère, Claude-André",
-        "Sultan, Imran",
-        "Boylan-Kolchin, Michael",
-        "Bland-Hawthorn, Joss"
-      ],
-      "bibcode": "2026MNRAS.tmp..991S",
-      "citations": 4,
-      "doctype": "article",
-      "doi": "10.1093/mnras/stag1059",
-      "page": null,
-      "pub": "Monthly Notices of the Royal Astronomical Society",
-      "pubdate": "2026-06-00",
-      "title": "Hot accretion onto spiral galaxies: the origin of extended and warped HI discs",
-      "url": "http://adsabs.harvard.edu/abs/2026MNRAS.tmp..991S",
       "volume": null,
       "year": "2026"
     },
@@ -255,7 +255,7 @@
         "Voit, G. Mark"
       ],
       "bibcode": "2026arXiv260406318P",
-      "citations": 3,
+      "citations": 4,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2604.06318",
       "page": null,
@@ -305,7 +305,7 @@
         "Wong, George N."
       ],
       "bibcode": "2026ApJS..283...27S",
-      "citations": 78,
+      "citations": 80,
       "doctype": "article",
       "doi": "10.3847/1538-4365/ae3717",
       "page": 27,
@@ -738,7 +738,7 @@
         "Klessen, Ralf S."
       ],
       "bibcode": "2025MNRAS.538.3068F",
-      "citations": 25,
+      "citations": 26,
       "doctype": "article",
       "doi": "10.1093/mnras/staf363",
       "page": 3068,
@@ -830,7 +830,7 @@
         "Sandstrom, Karin"
       ],
       "bibcode": "2025MNRAS.536.1799R",
-      "citations": 26,
+      "citations": 27,
       "doctype": "article",
       "doi": "10.1093/mnras/stae2705",
       "page": 1799,
@@ -1161,6 +1161,24 @@
       "title": "The Well: a Large-Scale Collection of Diverse Physics Simulations for Machine Learning",
       "url": "http://adsabs.harvard.edu/abs/2024arXiv241200568O",
       "volume": null,
+      "year": "2024"
+    },
+    {
+      "arxiv": null,
+      "authors": [
+        "Fielding, David",
+        "Regasa, Dereje"
+      ],
+      "bibcode": "2024WoDev.18306733F",
+      "citations": 0,
+      "doctype": "article",
+      "doi": "10.1016/j.worlddev.2024.106733",
+      "page": 106733,
+      "pub": "World Development",
+      "pubdate": "2024-11-00",
+      "title": "Banking competition and financial inclusion: Evidence from Ethiopia",
+      "url": "http://adsabs.harvard.edu/abs/2024WoDev.18306733F",
+      "volume": "183",
       "year": "2024"
     },
     {
@@ -1511,7 +1529,7 @@
         "Bullock, James"
       ],
       "bibcode": "2024MNRAS.530.1711S",
-      "citations": 49,
+      "citations": 50,
       "doctype": "article",
       "doi": "10.1093/mnras/stae824",
       "page": 1711,
@@ -1645,7 +1663,7 @@
         "Whalen, Kelly E."
       ],
       "bibcode": "2024Natur.625..459C",
-      "citations": 22,
+      "citations": 23,
       "doctype": "article",
       "doi": "10.1038/s41586-023-06752-8",
       "page": 459,
@@ -1736,7 +1754,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2024ApJ...960..100S",
-      "citations": 55,
+      "citations": 56,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad09e1",
       "page": 100,
@@ -1809,7 +1827,7 @@
         "Ripperda, Bart"
       ],
       "bibcode": "2023MNRAS.525.4985K",
-      "citations": 76,
+      "citations": 77,
       "doctype": "article",
       "doi": "10.1093/mnras/stad2609",
       "page": 4985,
@@ -2156,7 +2174,7 @@
         "Tremmel, Michael"
       ],
       "bibcode": "2022ApJ...935...69B",
-      "citations": 33,
+      "citations": 34,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac7ebd",
       "page": 69,
@@ -2176,7 +2194,7 @@
         "Burkhart, Blakesley"
       ],
       "bibcode": "2022ApJ...932...88O",
-      "citations": 42,
+      "citations": 43,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac6c26",
       "page": 88,
@@ -2233,7 +2251,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2022ApJ...924...82F",
-      "citations": 156,
+      "citations": 157,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac2f41",
       "page": 82,
@@ -2462,7 +2480,7 @@
         "Starkenburg, Tjitske"
       ],
       "bibcode": "2020ApJ...905....4P",
-      "citations": 52,
+      "citations": 54,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abc3c1",
       "page": 4,
@@ -2509,7 +2527,7 @@
         "Werk, Jessica K."
       ],
       "bibcode": "2020ApJ...903...77B",
-      "citations": 104,
+      "citations": 105,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abbad2",
       "page": 77,
@@ -2602,7 +2620,7 @@
         "Zhang, Yin-Fang"
       ],
       "bibcode": "2020WoDev.13405044O",
-      "citations": 34,
+      "citations": 36,
       "doctype": "article",
       "doi": "10.1016/j.worlddev.2020.105044",
       "page": 105044,
@@ -2628,7 +2646,7 @@
         "Hodge, Robert"
       ],
       "bibcode": "2020JBR....14d6013F",
-      "citations": 0,
+      "citations": 1,
       "doctype": "article",
       "doi": "10.1088/1752-7163/abb18a",
       "page": 46013,
@@ -2713,7 +2731,7 @@
         "Fielding, Drummond"
       ],
       "bibcode": "2020MNRAS.493.1461L",
-      "citations": 44,
+      "citations": 45,
       "doctype": "article",
       "doi": "10.1093/mnras/staa358",
       "page": 1461,
@@ -3194,7 +3212,7 @@
         "Faucher-Giguère, Claude-André"
       ],
       "bibcode": "2017MNRAS.470L..39F",
-      "citations": 96,
+      "citations": 97,
       "doctype": "article",
       "doi": "10.1093/mnrasl/slx072",
       "page": "L39",
@@ -3266,7 +3284,7 @@
         "Thompson, Todd A."
       ],
       "bibcode": "2017MNRAS.466.3810F",
-      "citations": 182,
+      "citations": 183,
       "doctype": "article",
       "doi": "10.1093/mnras/stw3326",
       "page": 3810,
