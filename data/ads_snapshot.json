@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-12T14:51:04Z",
+  "fetched_at": "2026-07-19T14:50:40Z",
   "fields": [
     "id",
     "title",
@@ -16,8 +16,33 @@
     "bibcode"
   ],
   "query": "orcid:\"0000-0003-3806-8548\" OR author:\"Fielding, Drummond\" OR author:\"Fielding, Drummond B.\" OR author:\"Fielding, D. B.\" OR author:\"Fielding, D.\"",
-  "record_count": 162,
+  "record_count": 163,
   "records": [
+    {
+      "arxiv": "2607.12087",
+      "authors": [
+        "Lin, Allison",
+        "Lancaster, Lachlan",
+        "Pandya, Viraj",
+        "Fielding, Drummond B.",
+        "Bryan, Greg L.",
+        "ZuHone, John A.",
+        "Lopez, Sebastian",
+        "Lopez, Laura A.",
+        "Carr, Christopher"
+      ],
+      "bibcode": "2026arXiv260712087L",
+      "citations": 0,
+      "doctype": "eprint",
+      "doi": "10.48550/arXiv.2607.12087",
+      "page": null,
+      "pub": "arXiv e-prints",
+      "pubdate": "2026-07-00",
+      "title": "Illuminating M82: Simulating X-ray Emission from Galactic Winds in a Starburst Galaxy",
+      "url": "http://adsabs.harvard.edu/abs/2026arXiv260712087L",
+      "volume": null,
+      "year": "2026"
+    },
     {
       "arxiv": "2511.03793",
       "authors": [
@@ -41,6 +66,26 @@
       "title": "Hot accretion onto spiral galaxies: the origin of extended and warped H I discs",
       "url": "http://adsabs.harvard.edu/abs/2026MNRAS.549g1059S",
       "volume": "549",
+      "year": "2026"
+    },
+    {
+      "arxiv": "2606.04087",
+      "authors": [
+        "Lancaster, Lachlan",
+        "Mohapatra, Rajsekhar",
+        "Fielding, Drummond B.",
+        "Bryan, Greg L."
+      ],
+      "bibcode": "2026ApJ..1005..222L",
+      "citations": 1,
+      "doctype": "article",
+      "doi": "10.3847/1538-4357/ae7714",
+      "page": 222,
+      "pub": "The Astrophysical Journal",
+      "pubdate": "2026-07-00",
+      "title": "Ceci n'est pas une Couche de Mélange: The Meaning of Resolved Turbulent Radiative Mixing",
+      "url": "http://adsabs.harvard.edu/abs/2026ApJ..1005..222L",
+      "volume": "1005",
       "year": "2026"
     },
     {
@@ -107,26 +152,6 @@
       "year": "2026"
     },
     {
-      "arxiv": "2606.04087",
-      "authors": [
-        "Lancaster, Lachlan",
-        "Mohapatra, Rajsekhar",
-        "Fielding, Drummond B.",
-        "Bryan, Greg L."
-      ],
-      "bibcode": "2026arXiv260604087L",
-      "citations": 1,
-      "doctype": "eprint",
-      "doi": "10.48550/arXiv.2606.04087",
-      "page": null,
-      "pub": "arXiv e-prints",
-      "pubdate": "2026-06-00",
-      "title": "Ceci n'est pas une Couche de Mélange: The Meaning of Resolved Turbulent Radiative Mixing",
-      "url": "http://adsabs.harvard.edu/abs/2026arXiv260604087L",
-      "volume": null,
-      "year": "2026"
-    },
-    {
       "arxiv": "2510.27678",
       "authors": [
         "Goldner, Roy",
@@ -137,7 +162,7 @@
         "Kakoly, Aharon"
       ],
       "bibcode": "2026MNRAS.548ag717G",
-      "citations": 5,
+      "citations": 6,
       "doctype": "article",
       "doi": "10.1093/mnras/stag717",
       "page": "stag717",
@@ -193,7 +218,7 @@
         "Hirschmann, Michaela"
       ],
       "bibcode": "2026arXiv260503154S",
-      "citations": 1,
+      "citations": 2,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2605.03154",
       "page": null,
@@ -255,7 +280,7 @@
         "Voit, G. Mark"
       ],
       "bibcode": "2026arXiv260406318P",
-      "citations": 4,
+      "citations": 5,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2604.06318",
       "page": null,
@@ -305,7 +330,7 @@
         "Wong, George N."
       ],
       "bibcode": "2026ApJS..283...27S",
-      "citations": 80,
+      "citations": 81,
       "doctype": "article",
       "doi": "10.3847/1538-4365/ae3717",
       "page": 27,
@@ -325,7 +350,7 @@
         "Brüggen, Marcus"
       ],
       "bibcode": "2026arXiv260223416R",
-      "citations": 3,
+      "citations": 4,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2602.23416",
       "page": null,
@@ -428,7 +453,7 @@
         "Stone, James"
       ],
       "bibcode": "2025ApJ...994L..49K",
-      "citations": 13,
+      "citations": 14,
       "doctype": "article",
       "doi": "10.3847/2041-8213/ae1ca3",
       "page": "L49",
@@ -647,7 +672,7 @@
         "Brüggen, Marcus"
       ],
       "bibcode": "2025A&A...699A..10R",
-      "citations": 15,
+      "citations": 16,
       "doctype": "article",
       "doi": "10.1051/0004-6361/202451303",
       "page": "A10",
@@ -1060,7 +1085,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2024ApJ...976..151V",
-      "citations": 13,
+      "citations": 15,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad81d5",
       "page": 151,
@@ -1084,7 +1109,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2024ApJ...976..150V",
-      "citations": 17,
+      "citations": 19,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad81d6",
       "page": 150,
@@ -1345,7 +1370,7 @@
         "Steinwandel, Ulrich P."
       ],
       "bibcode": "2024ApJ...972...67K",
-      "citations": 20,
+      "citations": 21,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad59ab",
       "page": 67,
@@ -1529,7 +1554,7 @@
         "Bullock, James"
       ],
       "bibcode": "2024MNRAS.530.1711S",
-      "citations": 50,
+      "citations": 52,
       "doctype": "article",
       "doi": "10.1093/mnras/stae824",
       "page": 1711,
@@ -1568,7 +1593,7 @@
         "Brüggen, Marcus"
       ],
       "bibcode": "2024A&A...684L..16R",
-      "citations": 18,
+      "citations": 20,
       "doctype": "article",
       "doi": "10.1051/0004-6361/202348786",
       "page": "L16",
@@ -1605,7 +1630,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2024MNRAS.527.9683T",
-      "citations": 57,
+      "citations": 58,
       "doctype": "article",
       "doi": "10.1093/mnras/stad3793",
       "page": 9683,
@@ -1711,7 +1736,7 @@
         "Li, Yuan"
       ],
       "bibcode": "2024MNRAS.527.1216S",
-      "citations": 41,
+      "citations": 42,
       "doctype": "article",
       "doi": "10.1093/mnras/stad3168",
       "page": 1216,
@@ -1754,7 +1779,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2024ApJ...960..100S",
-      "citations": 56,
+      "citations": 57,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad09e1",
       "page": 100,
@@ -1827,7 +1852,7 @@
         "Ripperda, Bart"
       ],
       "bibcode": "2023MNRAS.525.4985K",
-      "citations": 77,
+      "citations": 78,
       "doctype": "article",
       "doi": "10.1093/mnras/stad2609",
       "page": 4985,
@@ -1853,7 +1878,7 @@
         "Forbes, John C."
       ],
       "bibcode": "2023ApJ...956..118P",
-      "citations": 48,
+      "citations": 50,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acf3ea",
       "page": 118,
@@ -1902,7 +1927,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2023arXiv230703228A",
-      "citations": 21,
+      "citations": 22,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2307.03228",
       "page": null,
@@ -1940,7 +1965,7 @@
         "Philippov, Alexander A."
       ],
       "bibcode": "2023ApJ...949L...5F",
-      "citations": 43,
+      "citations": 44,
       "doctype": "article",
       "doi": "10.3847/2041-8213/accf1f",
       "page": "L5",
@@ -1961,7 +1986,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2023ApJ...949...21C",
-      "citations": 37,
+      "citations": 38,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acc4c7",
       "page": 21,
@@ -2146,7 +2171,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2022MNRAS.514.5056H",
-      "citations": 110,
+      "citations": 111,
       "doctype": "article",
       "doi": "10.1093/mnras/stac1603",
       "page": 5056,
@@ -2213,7 +2238,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2022ApJ...925..199A",
-      "citations": 64,
+      "citations": 65,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac3c48",
       "page": 199,
@@ -2251,7 +2276,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2022ApJ...924...82F",
-      "citations": 157,
+      "citations": 160,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac2f41",
       "page": 82,
@@ -2310,7 +2335,7 @@
         "Wetzel, Andrew"
       ],
       "bibcode": "2021MNRAS.508.2979P",
-      "citations": 164,
+      "citations": 165,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2714",
       "page": 2979,
@@ -2387,7 +2412,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021ApJ...911...88S",
-      "citations": 144,
+      "citations": 145,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abd776",
       "page": 88,
@@ -2480,7 +2505,7 @@
         "Starkenburg, Tjitske"
       ],
       "bibcode": "2020ApJ...905....4P",
-      "citations": 54,
+      "citations": 55,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abc3c1",
       "page": 4,
@@ -2710,7 +2735,7 @@
         "Jermyn, Adam S."
       ],
       "bibcode": "2020ApJ...894L..24F",
-      "citations": 187,
+      "citations": 189,
       "doctype": "article",
       "doi": "10.3847/2041-8213/ab8d2c",
       "page": "L24",
@@ -2751,7 +2776,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2020MNRAS.492.6042S",
-      "citations": 78,
+      "citations": 79,
       "doctype": "article",
       "doi": "10.1093/mnras/staa198",
       "page": 6042,
@@ -2790,7 +2815,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2019MNRAS.488.2549S",
-      "citations": 104,
+      "citations": 105,
       "doctype": "article",
       "doi": "10.1093/mnras/stz1859",
       "page": 2549,
@@ -3128,7 +3153,7 @@
         "Martizzi, Davide"
       ],
       "bibcode": "2018MNRAS.481.3325F",
-      "citations": 165,
+      "citations": 166,
       "doctype": "article",
       "doi": "10.1093/mnras/sty2466",
       "page": 3325,
@@ -3212,7 +3237,7 @@
         "Faucher-Giguère, Claude-André"
       ],
       "bibcode": "2017MNRAS.470L..39F",
-      "citations": 97,
+      "citations": 98,
       "doctype": "article",
       "doi": "10.1093/mnrasl/slx072",
       "page": "L39",
@@ -3284,7 +3309,7 @@
         "Thompson, Todd A."
       ],
       "bibcode": "2017MNRAS.466.3810F",
-      "citations": 183,
+      "citations": 185,
       "doctype": "article",
       "doi": "10.1093/mnras/stw3326",
       "page": 3810,
@@ -3305,7 +3330,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2016ApJ...827L..11O",
-      "citations": 117,
+      "citations": 119,
       "doctype": "article",
       "doi": "10.3847/2041-8205/827/1/L11",
       "page": "L11",
@@ -3835,7 +3860,7 @@
         "Kearney, A. T."
       ],
       "bibcode": "1999TellB..51..759A",
-      "citations": 73,
+      "citations": 74,
       "doctype": "article",
       "doi": "10.3402/tellusb.v51i4.16483",
       "page": 759,
