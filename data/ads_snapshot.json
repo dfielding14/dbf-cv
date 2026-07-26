@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-19T14:50:40Z",
+  "fetched_at": "2026-07-26T14:59:59Z",
   "fields": [
     "id",
     "title",
@@ -330,7 +330,7 @@
         "Wong, George N."
       ],
       "bibcode": "2026ApJS..283...27S",
-      "citations": 81,
+      "citations": 84,
       "doctype": "article",
       "doi": "10.3847/1538-4365/ae3717",
       "page": 27,
@@ -1085,7 +1085,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2024ApJ...976..151V",
-      "citations": 15,
+      "citations": 16,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad81d5",
       "page": 151,
@@ -1109,7 +1109,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2024ApJ...976..150V",
-      "citations": 19,
+      "citations": 20,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad81d6",
       "page": 150,
@@ -1177,7 +1177,7 @@
         "Ho, Shirley"
       ],
       "bibcode": "2024arXiv241200568O",
-      "citations": 16,
+      "citations": 17,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2412.00568",
       "page": null,
@@ -1343,7 +1343,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2024ApJ...972..148H",
-      "citations": 23,
+      "citations": 24,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad5965",
       "page": 148,
@@ -1573,7 +1573,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2024ApJ...966..181A",
-      "citations": 36,
+      "citations": 38,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad1e51",
       "page": 181,
@@ -1736,7 +1736,7 @@
         "Li, Yuan"
       ],
       "bibcode": "2024MNRAS.527.1216S",
-      "citations": 42,
+      "citations": 43,
       "doctype": "article",
       "doi": "10.1093/mnras/stad3168",
       "page": 1216,
@@ -1852,7 +1852,7 @@
         "Ripperda, Bart"
       ],
       "bibcode": "2023MNRAS.525.4985K",
-      "citations": 78,
+      "citations": 79,
       "doctype": "article",
       "doi": "10.1093/mnras/stad2609",
       "page": 4985,
@@ -1878,7 +1878,7 @@
         "Forbes, John C."
       ],
       "bibcode": "2023ApJ...956..118P",
-      "citations": 50,
+      "citations": 51,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acf3ea",
       "page": 118,
@@ -1946,7 +1946,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2023ApJ...950...91C",
-      "citations": 20,
+      "citations": 21,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acc73f",
       "page": 91,
@@ -1986,7 +1986,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2023ApJ...949...21C",
-      "citations": 38,
+      "citations": 40,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acc4c7",
       "page": 21,
@@ -2171,7 +2171,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2022MNRAS.514.5056H",
-      "citations": 111,
+      "citations": 112,
       "doctype": "article",
       "doi": "10.1093/mnras/stac1603",
       "page": 5056,
@@ -2238,7 +2238,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2022ApJ...925..199A",
-      "citations": 65,
+      "citations": 66,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac3c48",
       "page": 199,
@@ -2276,7 +2276,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2022ApJ...924...82F",
-      "citations": 160,
+      "citations": 161,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac2f41",
       "page": 82,
@@ -2380,7 +2380,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021MNRAS.507.2869S",
-      "citations": 40,
+      "citations": 41,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2240",
       "page": 2869,
@@ -2476,7 +2476,7 @@
         "Yuan, Y."
       ],
       "bibcode": "2020ApJ...905...14B",
-      "citations": 30,
+      "citations": 31,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abc484",
       "page": 14,
@@ -2552,7 +2552,7 @@
         "Werk, Jessica K."
       ],
       "bibcode": "2020ApJ...903...77B",
-      "citations": 105,
+      "citations": 106,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abbad2",
       "page": 77,
@@ -2583,7 +2583,7 @@
         "Hernquist, Lars"
       ],
       "bibcode": "2020ApJ...903...32F",
-      "citations": 76,
+      "citations": 77,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abbc6d",
       "page": 32,
@@ -2671,7 +2671,7 @@
         "Hodge, Robert"
       ],
       "bibcode": "2020JBR....14d6013F",
-      "citations": 1,
+      "citations": 2,
       "doctype": "article",
       "doi": "10.1088/1752-7163/abb18a",
       "page": 46013,
@@ -2715,7 +2715,7 @@
         "Pandya, Viraj"
       ],
       "bibcode": "2020ApJ...900...61K",
-      "citations": 147,
+      "citations": 148,
       "doctype": "article",
       "doi": "10.3847/1538-4357/aba962",
       "page": 61,
@@ -2735,7 +2735,7 @@
         "Jermyn, Adam S."
       ],
       "bibcode": "2020ApJ...894L..24F",
-      "citations": 189,
+      "citations": 191,
       "doctype": "article",
       "doi": "10.3847/2041-8213/ab8d2c",
       "page": "L24",
@@ -2815,7 +2815,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2019MNRAS.488.2549S",
-      "citations": 105,
+      "citations": 106,
       "doctype": "article",
       "doi": "10.1093/mnras/stz1859",
       "page": 2549,
