@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-16T14:16:56Z",
+  "fetched_at": "2026-08-23T14:17:45Z",
   "fields": [
     "id",
     "title",
@@ -18,6 +18,31 @@
   "query": "orcid:\"0000-0003-3806-8548\" OR author:\"Fielding, Drummond\" OR author:\"Fielding, Drummond B.\" OR author:\"Fielding, D. B.\" OR author:\"Fielding, D.\"",
   "record_count": 163,
   "records": [
+    {
+      "arxiv": "2605.03154",
+      "authors": [
+        "Sullivan, James M.",
+        "Bryan, Greg L.",
+        "Smith, Matthew C.",
+        "Bennett, Jake S.",
+        "Fielding, Drummond B.",
+        "Terrazas, Bryan A.",
+        "Koudmani, Sophie",
+        "Somerville, Rachel S.",
+        "Hirschmann, Michaela"
+      ],
+      "bibcode": "2026MNRAS.tmp.1416S",
+      "citations": 2,
+      "doctype": "article",
+      "doi": "10.1093/mnras/stag1520",
+      "page": null,
+      "pub": "Monthly Notices of the Royal Astronomical Society",
+      "pubdate": "2026-08-00",
+      "title": "Arkenstone BH: A model for high specific energy black hole feedback in cosmological simulations",
+      "url": "http://adsabs.harvard.edu/abs/2026MNRAS.tmp.1416S",
+      "volume": null,
+      "year": "2026"
+    },
     {
       "arxiv": "2607.12087",
       "authors": [
@@ -205,31 +230,6 @@
       "year": "2026"
     },
     {
-      "arxiv": "2605.03154",
-      "authors": [
-        "Sullivan, James M.",
-        "Bryan, Greg L.",
-        "Smith, Matthew C.",
-        "Bennett, Jake S.",
-        "Fielding, Drummond B.",
-        "Terrazas, Bryan A.",
-        "Koudmani, Sophie",
-        "Somerville, Rachel S.",
-        "Hirschmann, Michaela"
-      ],
-      "bibcode": "2026arXiv260503154S",
-      "citations": 2,
-      "doctype": "eprint",
-      "doi": "10.48550/arXiv.2605.03154",
-      "page": null,
-      "pub": "arXiv e-prints",
-      "pubdate": "2026-05-00",
-      "title": "ArkenstoneBH. A model for high-specific energy black hole feedback in cosmological simulations",
-      "url": "http://adsabs.harvard.edu/abs/2026arXiv260503154S",
-      "volume": null,
-      "year": "2026"
-    },
-    {
       "arxiv": "2510.02443",
       "authors": [
         "Chen, Zirui",
@@ -350,7 +350,7 @@
         "Brüggen, Marcus"
       ],
       "bibcode": "2026arXiv260223416R",
-      "citations": 5,
+      "citations": 6,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2602.23416",
       "page": null,
@@ -2645,7 +2645,7 @@
         "Zhang, Yin-Fang"
       ],
       "bibcode": "2020WoDev.13405044O",
-      "citations": 47,
+      "citations": 50,
       "doctype": "article",
       "doi": "10.1016/j.worlddev.2020.105044",
       "page": 105044,
@@ -3237,7 +3237,7 @@
         "Faucher-Giguère, Claude-André"
       ],
       "bibcode": "2017MNRAS.470L..39F",
-      "citations": 98,
+      "citations": 99,
       "doctype": "article",
       "doi": "10.1093/mnrasl/slx072",
       "page": "L39",
@@ -3458,7 +3458,7 @@
         "Pakeman, R. J."
       ],
       "bibcode": "2016EcoSv..17..152E",
-      "citations": 54,
+      "citations": 55,
       "doctype": "article",
       "doi": "10.1016/j.ecoser.2015.12.001",
       "page": 152,
@@ -3481,7 +3481,7 @@
         "Wilson, Jeremy D."
       ],
       "bibcode": "2015BCons.191..243D",
-      "citations": 46,
+      "citations": 48,
       "doctype": "article",
       "doi": "10.1016/j.biocon.2015.06.014",
       "page": 243,
@@ -3664,7 +3664,7 @@
         "Irvine, R. Justin"
       ],
       "bibcode": "2011JApEc..48.1269D",
-      "citations": 22,
+      "citations": 23,
       "doctype": "article",
       "doi": "10.1111/j.1365-2664.2011.02032.x",
       "page": 1269,
@@ -3728,7 +3728,7 @@
         "Defoliart, Linda S."
       ],
       "bibcode": "2007PhyBZ..80..607F",
-      "citations": 5,
+      "citations": 6,
       "doctype": "article",
       "doi": "10.1086/521801",
       "page": 607,
