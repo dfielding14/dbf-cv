@@ -46,6 +46,31 @@ class PublicationsTest(unittest.TestCase):
         self.assertEqual(led["2024Example....1A"]["category"], "graduate")
         self.assertEqual(led["2024Example....2B"]["category"], "postdoc")
 
+    def test_advising_without_publication_category(self):
+        advisee = {
+            "name": "Example Post-bac",
+            "role": "Post-bac Student",
+            "affiliation": "NYU",
+        }
+        manifest = {
+            "categories": {
+                "graduate": {"symbol": "\\ddagger", "legend": "graduate student-led"},
+            },
+            "advisees": [advisee],
+        }
+        _, visible, led = build_advisee_data(manifest)
+        self.assertEqual(visible, [advisee])
+        self.assertEqual(led, {})
+
+        advisee["category"] = "unknown"
+        with self.assertRaisesRegex(ValueError, "unknown category"):
+            build_advisee_data(manifest)
+
+        del advisee["category"]
+        advisee["led_papers"] = ["2024Example....1A"]
+        with self.assertRaisesRegex(ValueError, "unknown category"):
+            build_advisee_data(manifest)
+
     def test_ads_metrics_updated_on_uses_snapshot_fetched_at(self):
         fetched_at = datetime(2026, 5, 4, 12, 30, tzinfo=timezone.utc)
         record = {

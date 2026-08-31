@@ -58,14 +58,11 @@ sections:
   - title: 'Professional services \& teaching'
     type: itemize
     items:
-      - 'Astro 1101: From New Worlds to Black Holes --- Cornell University --- 200+ undergraduates \hfill Fall 2024'
-      - 'Astro 6590: Galaxies and the Universe --- Cornell University --- graduate level \hfill Spring 2025'
-      - 'Founder and organizer of the \emph{New York Area Fluid Dynamics Meeting}, a cross-disciplinary monthly meeting of local fluid dynamicists, 2020--'
+      - 'Founder and organizer of the \emph{New York Area Fluid Dynamics Meeting}, a cross-disciplinary monthly meeting of local fluid dynamicists, 2020'
       - 'Research Mentor, \emph{Simons-National Society of Black Physicists Scholars Program}, 2023'
       - '\href{https://www.simonsfoundation.org/grant/flatiron-institute-center-for-computational-astrophysics-pre-doctoral-program/}{\it Flatiron Pre-Doctoral Program} graduate student mentor, 2019--2024'
       - 'Referee: MNRAS, ApJ, ApJL, PRL'
       - 'Proposal evaluation panelist: NSF (2020), NASA HST (2024)'
-      - 'Summer research mentor for the Cornell \emph{Nexus Scholars Program}, 2025--'
 
   - title: Honors and awards
     type: itemize
@@ -88,7 +85,9 @@ sections:
 
   - title: Selected recent presentations
     type: itemize
+    new_page_before: true
     items:
+      - 'Invited Seminar, Diffuse Gas in Cosmic Ecosystems Science Interest Group (7/2026)'
       - 'Endowed Colloquium, Niels Bohr Lecture, Niels Bohr Institute, Copenhagen (10/2024)'
       - 'Seminar, Institute for Advanced Studies, Princeton (10/2024)'
       - 'Colloquium, Flatiron Institute, Center for Computational Astrophysics (2/2024)'

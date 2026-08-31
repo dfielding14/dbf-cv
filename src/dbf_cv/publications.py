@@ -583,7 +583,7 @@ def build_advisee_data(manifest: dict) -> tuple[dict, list[dict], dict[str, dict
             raise ValueError("Each advisee in data/advisees.yaml must have a non-empty `name`.")
 
         category = advisee.get("category")
-        if category not in categories:
+        if category not in categories and (category is not None or advisee.get("led_papers")):
             raise ValueError(
                 f"Advisee `{name}` uses unknown category `{category}` in data/advisees.yaml."
             )

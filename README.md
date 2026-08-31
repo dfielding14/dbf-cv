@@ -147,7 +147,7 @@ Edit [`data/sections.yaml`](data/sections.yaml).
 
 Edit [`data/advisees.yaml`](data/advisees.yaml).
 
-Each advisee entry can appear in the visible advising section and can also own a list of `led_papers` by ADS bibcode. The category controls the symbol used in the publication list:
+Each advisee entry can appear in the visible advising section and can also own a list of `led_papers` by ADS bibcode. A category is required only for entries with `led_papers`; it controls the symbol used in the publication list:
 
 - `graduate` -> `\ddagger`
 - `undergraduate` -> `\mathsection`

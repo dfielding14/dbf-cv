@@ -14,6 +14,7 @@ advisees:
     category: postdoc
     role: Postdoc
     affiliation: Cornell University and NYU
+    outcome: Polymathic
     url: https://scholar.google.com/citations?user=J8TJmdsAAAAJ&hl=en
     led_papers:
       - 2024MNRAS.527.9683T
@@ -25,13 +26,28 @@ advisees:
     category: graduate
     role: Graduate Student
     affiliation: NYU
+  - name: Maëlle Magnan
+    category: graduate
+    role: Graduate Student
+    affiliation: NYU
   - name: Nana Ama Darpaah
     category: graduate
     role: Masters Student
     affiliation: NYU
+  - name: Leela Elliott
+    role: Post-bac Student
+    affiliation: NYU
   - name: Lillion Shi
     category: undergraduate
     role: Undergraduate
+    affiliation: NYU
+  - name: Sohum Udani
+    category: undergraduate
+    role: Undergraduate Student
+    affiliation: NYU
+  - name: Tiegan Powell
+    category: undergraduate
+    role: Undergraduate Student
     affiliation: NYU
   - name: Yongqi Zhang
     category: graduate
