@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-23T14:17:45Z",
+  "fetched_at": "2026-08-31T22:33:01Z",
   "fields": [
     "id",
     "title",
@@ -16,7 +16,7 @@
     "bibcode"
   ],
   "query": "orcid:\"0000-0003-3806-8548\" OR author:\"Fielding, Drummond\" OR author:\"Fielding, Drummond B.\" OR author:\"Fielding, D. B.\" OR author:\"Fielding, D.\"",
-  "record_count": 163,
+  "record_count": 165,
   "records": [
     {
       "arxiv": "2605.03154",
@@ -31,16 +31,36 @@
         "Somerville, Rachel S.",
         "Hirschmann, Michaela"
       ],
-      "bibcode": "2026MNRAS.tmp.1416S",
-      "citations": 2,
+      "bibcode": "2026MNRAS.551g1520S",
+      "citations": 0,
       "doctype": "article",
       "doi": "10.1093/mnras/stag1520",
-      "page": null,
+      "page": "stag1520",
       "pub": "Monthly Notices of the Royal Astronomical Society",
-      "pubdate": "2026-08-00",
-      "title": "Arkenstone BH: A model for high specific energy black hole feedback in cosmological simulations",
-      "url": "http://adsabs.harvard.edu/abs/2026MNRAS.tmp.1416S",
-      "volume": null,
+      "pubdate": "2026-09-00",
+      "title": "ARKENSTONE BH: a model for high specific energy black hole feedback in cosmological simulations",
+      "url": "http://adsabs.harvard.edu/abs/2026MNRAS.551g1520S",
+      "volume": "551",
+      "year": "2026"
+    },
+    {
+      "arxiv": null,
+      "authors": [
+        "Lancaster, Lachlan",
+        "Fielding, Drummond",
+        "Mohapatra, Rajsekhar",
+        "Bryan, Greg L."
+      ],
+      "bibcode": "2026ApJ..1008...13L",
+      "citations": 0,
+      "doctype": "article",
+      "doi": "10.3847/1538-4357/ae908e",
+      "page": 13,
+      "pub": "The Astrophysical Journal",
+      "pubdate": "2026-09-00",
+      "title": "The Origin of Da Scaling: Suppressed Cooling in Fast-cooling Mixing Layers",
+      "url": "http://adsabs.harvard.edu/abs/2026ApJ..1008...13L",
+      "volume": "1008",
       "year": "2026"
     },
     {
@@ -227,6 +247,31 @@
       "title": "Resolving the Unresolved Galactic Winds in Multiphase Models. I. Methodology and Application",
       "url": "http://adsabs.harvard.edu/abs/2026ApJ..1003..155X",
       "volume": "1003",
+      "year": "2026"
+    },
+    {
+      "arxiv": "2605.03154",
+      "authors": [
+        "Sullivan, James M.",
+        "Bryan, Greg L.",
+        "Smith, Matthew C.",
+        "Bennett, Jake S.",
+        "Fielding, Drummond B.",
+        "Terrazas, Bryan A.",
+        "Koudmani, Sophie",
+        "Somerville, Rachel S.",
+        "Hirschmann, Michaela"
+      ],
+      "bibcode": "2026arXiv260503154S",
+      "citations": 0,
+      "doctype": "eprint",
+      "doi": "10.48550/arXiv.2605.03154",
+      "page": null,
+      "pub": "arXiv e-prints",
+      "pubdate": "2026-05-00",
+      "title": "ArkenstoneBH. A model for high-specific energy black hole feedback in cosmological simulations",
+      "url": "http://adsabs.harvard.edu/abs/2026arXiv260503154S",
+      "volume": null,
       "year": "2026"
     },
     {
@@ -453,7 +498,7 @@
         "Stone, James"
       ],
       "bibcode": "2025ApJ...994L..49K",
-      "citations": 15,
+      "citations": 16,
       "doctype": "article",
       "doi": "10.3847/2041-8213/ae1ca3",
       "page": "L49",
@@ -1829,7 +1874,7 @@
         "Sandstrom, Karin"
       ],
       "bibcode": "2023MNRAS.525.6170M",
-      "citations": 18,
+      "citations": 17,
       "doctype": "article",
       "doi": "10.1093/mnras/stad2685",
       "page": 6170,
@@ -1878,7 +1923,7 @@
         "Forbes, John C."
       ],
       "bibcode": "2023ApJ...956..118P",
-      "citations": 53,
+      "citations": 52,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acf3ea",
       "page": 118,
@@ -2136,7 +2181,7 @@
         "Sandstrom, Karin"
       ],
       "bibcode": "2022ApJ...941..163R",
-      "citations": 18,
+      "citations": 17,
       "doctype": "article",
       "doi": "10.3847/1538-4357/aca1bd",
       "page": 163,
@@ -2171,7 +2216,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2022MNRAS.514.5056H",
-      "citations": 114,
+      "citations": 115,
       "doctype": "article",
       "doi": "10.1093/mnras/stac1603",
       "page": 5056,
@@ -2335,7 +2380,7 @@
         "Wetzel, Andrew"
       ],
       "bibcode": "2021MNRAS.508.2979P",
-      "citations": 170,
+      "citations": 171,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2714",
       "page": 2979,
@@ -2412,7 +2457,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021ApJ...911...88S",
-      "citations": 147,
+      "citations": 146,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abd776",
       "page": 88,
@@ -2505,7 +2550,7 @@
         "Starkenburg, Tjitske"
       ],
       "bibcode": "2020ApJ...905....4P",
-      "citations": 56,
+      "citations": 57,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abc3c1",
       "page": 4,
@@ -2735,7 +2780,7 @@
         "Jermyn, Adam S."
       ],
       "bibcode": "2020ApJ...894L..24F",
-      "citations": 196,
+      "citations": 195,
       "doctype": "article",
       "doi": "10.3847/2041-8213/ab8d2c",
       "page": "L24",
@@ -2815,7 +2860,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2019MNRAS.488.2549S",
-      "citations": 107,
+      "citations": 108,
       "doctype": "article",
       "doi": "10.1093/mnras/stz1859",
       "page": 2549,
