@@ -99,8 +99,12 @@ python -m dbf_cv publish-website --website-repo /path/to/dfielding14.github.io
 ```
 
 The publish command validates `output/pdf/build_manifest.json` before syncing. If
-the manifest is missing, stale, incomplete, or the listed PDF hashes no longer
-match, it rebuilds the required bundled-font variants first.
+the manifest is missing, stale, incomplete, or the PDF or build-input hashes no
+longer match, it rebuilds the required bundled-font variants first. Input hashes
+cover the CV YAML, generator code, TeX sources, bundled fonts, package configuration,
+and active ADS snapshot, including uncommitted edits. Older manifests without
+input hashes also trigger a rebuild. Changes during generation prevent the build
+from being certified for reuse; commits alone do not invalidate matching inputs.
 
 Build and render PNG previews for visual inspection:
 
@@ -196,9 +200,14 @@ After a build, the key outputs are:
 ## Notes
 
 - ADS is the canonical citation source for per-paper counts, total citations, and h-index.
+- ADS refresh fetches every reported result, rejects partial responses, changing
+  counts, duplicate bibcodes, and malformed required fields, and preserves the
+  previous snapshot if any completeness check fails.
 - ADS snapshots are written as metadata objects with `fetched_at` provenance. The
   CV metrics and website `last_updated` dates use the ADS snapshot date, not the
   workflow run date.
 - Google Scholar is not scraped automatically.
 - `cache/`, `build/`, and `output/` are intentionally untracked.
 - `.github/workflows/publish-website.yml` is the weekly website sync; it requires `ADS_DEV_KEY` and `WEBSITE_PUSH_TOKEN`. It promotes a fresh ADS snapshot into `data/ads_snapshot.json`, commits that tracked fallback if changed, and allows fallback publishing only when the tracked snapshot is at most 21 days old.
+- Production publishing is restricted to the CV repository's `main` branch. The
+  website repository continues to use its `master` branch.

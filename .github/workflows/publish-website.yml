@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   publish:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
@@ -17,9 +18,10 @@ jobs:
       WEBSITE_REPOSITORY: dfielding14/dfielding14.github.io
       WEBSITE_BRANCH: master
     steps:
-      - name: Check required secrets
+      - name: Check main branch and required secrets
         shell: bash
         run: |
+          test "$GITHUB_REF" = refs/heads/main
           if [ -z "${ADS_DEV_KEY}" ]; then
             echo "ADS_DEV_KEY is required for weekly CV publishing." >&2
             exit 1
@@ -30,6 +32,8 @@ jobs:
           fi
 
       - uses: actions/checkout@v4
+        with:
+          ref: refs/heads/main
 
       - uses: actions/setup-python@v5
         with:
@@ -59,7 +63,7 @@ jobs:
 
           git add data/ads_snapshot.json
           git commit -m "Update ADS snapshot ($(TZ=America/New_York date +%F))"
-          git push origin HEAD:main
+          git push origin HEAD:refs/heads/main
 
       - name: Checkout website repo
         uses: actions/checkout@v4

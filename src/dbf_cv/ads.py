@@ -162,6 +162,20 @@ def extract_arxiv_ids(paper) -> list[str]:
 
 
 def normalize_record(paper) -> dict:
+    for field in ("bibcode", "doctype", "year", "pubdate"):
+        value = getattr(paper, field, None)
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"ADS record has missing or invalid `{field}`.")
+    for field in ("title", "author"):
+        value = getattr(paper, field, None)
+        if not isinstance(value, list) or not value or any(
+            not isinstance(item, str) or not item.strip() for item in value
+        ):
+            raise ValueError(f"ADS record has missing or invalid `{field}`.")
+    citations = getattr(paper, "citation_count", None)
+    if citations is not None and (type(citations) is not int or citations < 0):
+        raise ValueError("ADS record has an invalid `citation_count`.")
+
     page = getattr(paper, "page", None) or []
     page_value = None
     if page:
@@ -189,9 +203,20 @@ def normalize_record(paper) -> dict:
         "volume": getattr(paper, "volume", None),
         "page": page_value,
         "arxiv": arxiv_ids[0] if arxiv_ids else None,
-        "citations": getattr(paper, "citation_count", None) or 0,
+        "citations": citations or 0,
         "url": f"http://adsabs.harvard.edu/abs/{bibcode}" if bibcode else None,
     }
+
+
+def _complete_result_count(response) -> int:
+    if response.responseHeader.get("partialResults") or (
+        response.json["response"].get("numFoundExact") is False
+    ):
+        raise ValueError("ADS returned partial results or an inexact result count.")
+    count = response.numFound
+    if type(count) is not int or count <= 0:
+        raise ValueError("ADS returned an empty or invalid result count.")
+    return count
 
 
 def refresh_snapshot(rules_path: Path, output_path: Path) -> AdsSnapshot:
@@ -213,8 +238,28 @@ def refresh_snapshot(rules_path: Path, output_path: Path) -> AdsSnapshot:
             rows=200,
             fl=DEFAULT_FIELDS,
         )
-        records = sorted(
-            (normalize_record(paper) for paper in papers),
+        papers.execute()
+        expected_count = _complete_result_count(papers.response)
+        rows = papers.query["rows"]
+        papers.max_pages = (expected_count + rows - 1) // rows
+
+        records = []
+        bibcodes = set()
+        for paper in papers:
+            if _complete_result_count(papers.response) != expected_count:
+                raise ValueError("ADS result count changed during pagination; try again later.")
+            record = normalize_record(paper)
+            if record["bibcode"] in bibcodes:
+                raise ValueError(f"ADS returned duplicate bibcode `{record['bibcode']}`.")
+            bibcodes.add(record["bibcode"])
+            records.append(record)
+
+        if len(records) != expected_count:
+            raise ValueError(
+                f"ADS returned {len(records)} records but reported {expected_count}; "
+                "snapshot was not replaced."
+            )
+        records.sort(
             key=lambda item: (item.get("pubdate") or "", item.get("bibcode") or ""),
             reverse=True,
         )

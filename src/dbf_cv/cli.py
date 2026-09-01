@@ -138,6 +138,28 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def build_input_hashes() -> dict[str, str]:
+    patterns = (
+        "data/profile.yaml",
+        "data/sections.yaml",
+        "data/advisees.yaml",
+        "data/publication_rules.yaml",
+        "src/dbf_cv/**/*.py",
+        "tex/**/*.tex",
+        "tex/**/*.cls",
+        "tex/**/*.sty",
+        "assets/fonts/**/*.ttf",
+        "assets/fonts/**/*.otf",
+        "pyproject.toml",
+    )
+    paths = {
+        path for pattern in patterns for path in REPO_ROOT.glob(pattern) if path.is_file()
+    }
+    if ADS_SNAPSHOT_PATH.is_file():
+        paths.add(ADS_SNAPSHOT_PATH)
+    return {repo_relative(path): sha256_file(path) for path in sorted(paths)}
+
+
 def current_git_commit() -> str:
     try:
         result = subprocess.run(
@@ -183,6 +205,8 @@ def write_build_manifest(
     fetched_at = snapshot.get("fetched_at")
     if not isinstance(fetched_at, str) or not fetched_at.strip():
         raise CommandError("Publication artifacts are missing ADS snapshot provenance.")
+    if artifacts.get("input_hashes") != build_input_hashes():
+        raise CommandError("Build inputs changed during PDF generation; rebuild before publishing.")
 
     variant_payload = {}
     for variant in variants:
@@ -201,6 +225,7 @@ def write_build_manifest(
         .isoformat()
         .replace("+00:00", "Z"),
         "source_commit": current_git_commit(),
+        "input_hashes": artifacts["input_hashes"],
         "snapshot_path": repo_relative(Path(snapshot.get("path", ADS_SNAPSHOT_PATH))),
         "snapshot_fetched_at": fetched_at,
         "snapshot_record_count": snapshot.get("record_count"),
@@ -240,6 +265,8 @@ def validate_build_manifest(
 ) -> dict:
     manifest = load_build_manifest(path)
     validate_manifest_freshness(manifest, max_age_hours)
+    if manifest.get("input_hashes") != build_input_hashes():
+        raise CommandError("Build inputs changed or their hashes are missing from the manifest.")
 
     manifest_variants = manifest.get("variants")
     if not isinstance(manifest_variants, dict):
@@ -293,6 +320,7 @@ def prepare_generated_files(
     promote_snapshot: Path | None = None,
 ) -> tuple[str, dict, bool]:
     ensure_runtime_directories()
+    input_hashes = build_input_hashes()
 
     print_step("[1/4] Selecting font profile")
     resolved_font = write_font_profile(font_profile)
@@ -316,6 +344,7 @@ def prepare_generated_files(
     if skip_ads_refresh:
         fallback_used = False
     validate_snapshot_freshness(ADS_SNAPSHOT_PATH, max_age_hours)
+    input_hashes[repo_relative(ADS_SNAPSHOT_PATH)] = sha256_file(ADS_SNAPSHOT_PATH)
 
     print_step("[3/4] Rendering static TeX fragments")
     generate_static_tex()
@@ -326,6 +355,7 @@ def prepare_generated_files(
         PUBLICATION_RULES_PATH,
         ADVISEES_PATH,
     )
+    artifacts["input_hashes"] = input_hashes
     return resolved_font, artifacts, fallback_used
 
 
