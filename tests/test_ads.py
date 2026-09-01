@@ -4,11 +4,13 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
 from dbf_cv.ads import (
     DEFAULT_FIELDS,
     load_snapshot,
+    normalize_record,
     refresh_snapshot,
     snapshot_payload,
     validate_snapshot_freshness,
@@ -54,6 +56,17 @@ class AdsRefreshTest(unittest.TestCase):
         response = Mock(ok=True, text=json.dumps(payload), headers={})
         response.json.return_value = payload
         return response
+
+    def test_arxiv_identifier_precedence_and_page_fallback(self):
+        for identifiers, page, expected in (
+            ([None, "doi:example", "arXiv:first", "arXiv:first", "arXiv:second"], ["arXiv:page"], "first"),
+            (["doi:example"], ["arXiv:page"], "page"),
+            (["arXiv:"], ["arXiv:page"], ""),
+            (None, None, None),
+        ):
+            with self.subTest(identifiers=identifiers, page=page):
+                paper = SimpleNamespace(**self.paper(0), identifier=identifiers, page=page)
+                self.assertEqual(normalize_record(paper)["arxiv"], expected)
 
     @patch("dbf_cv.ads.configure_ads")
     @patch("requests.Session.get")

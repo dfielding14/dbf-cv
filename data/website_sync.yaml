@@ -1,5 +1,3 @@
-website_repo_slug: dfielding14/dfielding14.github.io
-target_branch: master
 site_data_path: _data/site.yml
 timezone: America/New_York
 pdf_targets:

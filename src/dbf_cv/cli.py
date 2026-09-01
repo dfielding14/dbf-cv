@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -100,7 +101,7 @@ def latex_environment() -> dict[str, str]:
 
 
 def run_subprocess(command: list[str], *, env: dict[str, str] | None = None) -> None:
-    printable = " ".join(shlex_quote(part) for part in command)
+    printable = shlex.join(map(str, command))
     print(f"$ {printable}", flush=True)
     try:
         subprocess.run(
@@ -113,13 +114,6 @@ def run_subprocess(command: list[str], *, env: dict[str, str] | None = None) -> 
         raise CommandError(
             f"Command failed with exit code {exc.returncode}: {printable}"
         ) from exc
-
-
-def shlex_quote(part: str | Path) -> str:
-    text = str(part)
-    if not text or any(char.isspace() for char in text):
-        return repr(text)
-    return text
 
 
 def repo_relative(path: Path) -> str:
@@ -298,17 +292,13 @@ def copy_snapshot(source: Path, target: Path) -> None:
     shutil.copy2(source, target)
 
 
-def refresh_pubs(promote_snapshot: Path | None = None) -> dict:
+def refresh_pubs(promote_snapshot: Path | None = None) -> None:
     print_step("[1/4] Refreshing ADS snapshot")
     snapshot = refresh_snapshot(PUBLICATION_RULES_PATH, ADS_SNAPSHOT_PATH)
     print_step(f"Refreshed {len(snapshot.records)} ADS records into {ADS_SNAPSHOT_PATH}.")
     if promote_snapshot is not None:
         copy_snapshot(ADS_SNAPSHOT_PATH, promote_snapshot)
         print_step(f"Promoted ADS snapshot into {Path(promote_snapshot).expanduser()}.")
-    return {
-        "snapshot": snapshot,
-        "fallback_used": False,
-    }
 
 
 def prepare_generated_files(
@@ -326,12 +316,10 @@ def prepare_generated_files(
     resolved_font = write_font_profile(font_profile)
     print_step(f"Using font profile: {resolved_font}")
 
-    if skip_ads_refresh:
-        print_step("[2/4] Validating ADS snapshot freshness")
-    else:
+    fallback_used = False
+    if not skip_ads_refresh:
         try:
-            refresh_result = refresh_pubs(promote_snapshot)
-            fallback_used = bool(refresh_result["fallback_used"])
+            refresh_pubs(promote_snapshot)
         except RuntimeError as exc:
             if fallback_snapshot is None:
                 raise
@@ -340,9 +328,7 @@ def prepare_generated_files(
             validate_snapshot_freshness(Path(fallback_snapshot).expanduser(), max_age_hours)
             copy_snapshot(Path(fallback_snapshot).expanduser(), ADS_SNAPSHOT_PATH)
             fallback_used = True
-        print_step("[2/4] Validating ADS snapshot freshness")
-    if skip_ads_refresh:
-        fallback_used = False
+    print_step("[2/4] Validating ADS snapshot freshness")
     validate_snapshot_freshness(ADS_SNAPSHOT_PATH, max_age_hours)
     input_hashes[repo_relative(ADS_SNAPSHOT_PATH)] = sha256_file(ADS_SNAPSHOT_PATH)
 

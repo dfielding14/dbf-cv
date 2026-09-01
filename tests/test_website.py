@@ -12,8 +12,6 @@ from dbf_cv.website import WebsiteSyncConfig, format_website_date, sync_website_
 class WebsiteSyncTest(unittest.TestCase):
     def setUp(self):
         self.config = WebsiteSyncConfig(
-            website_repo_slug="dfielding14/dfielding14.github.io",
-            target_branch="master",
             site_data_path="_data/site.yml",
             timezone="America/New_York",
             pdf_targets={

@@ -18,6 +18,34 @@ class PublicationsTest(unittest.TestCase):
     def test_latex_text_normalizes_box_drawing_dash(self):
         self.assertEqual(latex_text("Disk─Halo"), "Disk--Halo")
 
+    def test_latex_text_preserves_escaping_and_symbols(self):
+        self.assertEqual(latex_text(None), "")
+        self.assertEqual(
+            latex_text(r"&%$#_{}~^\ Maëlle"),
+            r"\&\%\$\#\_\{\}\textasciitilde{}\^{}\ Maëlle",
+        )
+        self.assertEqual(
+            latex_text("α β γ ∼ ≈ ≤ ≥ – — ─ −"),
+            r"$\alpha$ $\beta$ $\gamma$ $\sim$ $\approx$ $\leq$ $\geq$ -- --- -- -",
+        )
+
+    def test_format_publication_links(self):
+        record = {
+            "authors": ["Example, A."],
+            "title": "Gas & Hα",
+            "doi": "10.0000/example",
+            "arxiv": "2601.00001",
+            "url": "https://adsabs.harvard.edu/abs/example",
+            "citations": 100,
+        }
+        self.assertEqual(
+            publications.format_publication(record, 1),
+            r"\item[{\color{deemph}\scriptsize$\star$1}]"
+            r"Example, A., \href{https://doi.org/10.0000/example}{Gas \& H$\alpha$}"
+            r" (\href{https://arxiv.org/abs/2601.00001}{arXiv:2601.00001})"
+            r" [\href{https://adsabs.harvard.edu/abs/example}{\textbf{100} citations}]",
+        )
+
     def test_build_advisee_data(self):
         manifest = {
             "categories": {

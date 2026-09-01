@@ -105,6 +105,18 @@ class BuildInputTest(unittest.TestCase):
             self.assertEqual(cli.ensure_publish_pdfs_exist(self.args, ["full"]), {"rebuilt": True})
             rebuild.assert_called_once_with(self.args, ["full"])
 
+    def test_live_refresh_is_not_marked_as_fallback(self):
+        with patch.object(cli, "ensure_runtime_directories"), patch.object(
+            cli, "write_font_profile", return_value="bundled",
+        ), patch.object(cli, "refresh_pubs", return_value=None) as refresh, patch.object(
+            cli, "generate_static_tex",
+        ), patch.object(cli, "generate_publication_artifacts", return_value={}):
+            _, _, fallback_used = cli.prepare_generated_files(
+                font_profile="bundled", skip_ads_refresh=False, max_age_hours=24,
+            )
+        refresh.assert_called_once_with(None)
+        self.assertFalse(fallback_used)
+
     def test_edits_during_generation_cannot_be_certified(self):
         original_manifest = self.manifest_path.read_bytes()
         with patch.object(cli, "ensure_runtime_directories"), patch.object(

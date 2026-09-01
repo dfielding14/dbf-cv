@@ -7,7 +7,6 @@ from pathlib import Path
 import yaml
 
 from .paths import (
-    ADVISEES_PATH,
     DOCUMENT_METADATA_PATH,
     HEADER_PATH,
     PROFILE_PATH,
@@ -55,7 +54,6 @@ def _metadata_lines(profile: dict) -> list[str]:
         rf"\def\SummaryOnlyPublicationSectionTitle{{{latex_text(section_titles['summary_only'])}}}",
         rf"\def\adsurl{{{latex_text(urls['ads_search'])}}}",
         rf"\def\orcidurl{{{latex_text(urls['orcid'])}}}",
-        rf"\def\arxivurl{{{latex_text(urls['arxiv_search'])}}}",
         rf"\def\scholarurl{{{latex_text(urls['google_scholar'])}}}",
         "",
     ]

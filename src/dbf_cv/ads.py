@@ -140,25 +140,14 @@ def write_snapshot(
     return load_snapshot(path)
 
 
-def extract_arxiv_ids(paper) -> list[str]:
-    identifiers = getattr(paper, "identifier", None) or []
-    arxiv_ids = [
-        identifier.split(":", 1)[1]
-        for identifier in identifiers
-        if isinstance(identifier, str) and identifier.startswith("arXiv:")
-    ]
-
+def extract_arxiv_id(paper) -> str | None:
+    for identifier in getattr(paper, "identifier", None) or []:
+        if isinstance(identifier, str) and identifier.startswith("arXiv:"):
+            return identifier.split(":", 1)[1]
     page = getattr(paper, "page", None) or []
     if page and isinstance(page[0], str) and page[0].startswith("arXiv:"):
-        arxiv_ids.append(page[0].split(":", 1)[1])
-
-    deduped: list[str] = []
-    seen = set()
-    for arxiv_id in arxiv_ids:
-        if arxiv_id not in seen:
-            seen.add(arxiv_id)
-            deduped.append(arxiv_id)
-    return deduped
+        return page[0].split(":", 1)[1]
+    return None
 
 
 def normalize_record(paper) -> dict:
@@ -189,7 +178,6 @@ def normalize_record(paper) -> dict:
                 page_value = candidate
 
     doi_list = getattr(paper, "doi", None) or []
-    arxiv_ids = extract_arxiv_ids(paper)
     bibcode = getattr(paper, "bibcode", None)
     return {
         "bibcode": bibcode,
@@ -202,7 +190,7 @@ def normalize_record(paper) -> dict:
         "pub": getattr(paper, "pub", None),
         "volume": getattr(paper, "volume", None),
         "page": page_value,
-        "arxiv": arxiv_ids[0] if arxiv_ids else None,
+        "arxiv": extract_arxiv_id(paper),
         "citations": citations or 0,
         "url": f"http://adsabs.harvard.edu/abs/{bibcode}" if bibcode else None,
     }

@@ -18,8 +18,6 @@ from .paths import VARIANT_TO_PDF, WEBSITE_SYNC_PATH
 class WebsiteSyncConfig:
     """Validated website publishing configuration."""
 
-    website_repo_slug: str
-    target_branch: str
     site_data_path: str
     timezone: str
     pdf_targets: dict[str, str]
@@ -35,8 +33,6 @@ def load_sync_config(path: Path = WEBSITE_SYNC_PATH) -> WebsiteSyncConfig:
         raise ValueError("data/website_sync.yaml must contain a top-level object.")
 
     required_fields = (
-        "website_repo_slug",
-        "target_branch",
         "site_data_path",
         "timezone",
         "pdf_targets",
@@ -68,8 +64,6 @@ def load_sync_config(path: Path = WEBSITE_SYNC_PATH) -> WebsiteSyncConfig:
             )
 
     return WebsiteSyncConfig(
-        website_repo_slug=str(payload["website_repo_slug"]),
-        target_branch=str(payload["target_branch"]),
         site_data_path=str(payload["site_data_path"]),
         timezone=str(payload["timezone"]),
         pdf_targets={str(key): str(value) for key, value in pdf_targets.items()},

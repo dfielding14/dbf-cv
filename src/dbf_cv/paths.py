@@ -11,8 +11,6 @@ REPO_ROOT = SRC_ROOT.parent
 
 DATA_DIR = REPO_ROOT / "data"
 TEX_DIR = REPO_ROOT / "tex"
-TEX_STYLES_DIR = TEX_DIR / "styles"
-TEX_TEMPLATES_DIR = TEX_DIR / "templates"
 TEX_VARIANTS_DIR = TEX_DIR / "variants"
 ASSETS_DIR = REPO_ROOT / "assets"
 FONTS_DIR = ASSETS_DIR / "fonts"
@@ -23,14 +21,12 @@ CACHE_DIR = REPO_ROOT / "cache"
 OUTPUT_DIR = REPO_ROOT / "output"
 PDF_OUTPUT_DIR = OUTPUT_DIR / "pdf"
 RENDER_OUTPUT_DIR = OUTPUT_DIR / "rendered"
-TESTS_DIR = REPO_ROOT / "tests"
 
 PROFILE_PATH = DATA_DIR / "profile.yaml"
 SECTIONS_PATH = DATA_DIR / "sections.yaml"
 ADVISEES_PATH = DATA_DIR / "advisees.yaml"
 PUBLICATION_RULES_PATH = DATA_DIR / "publication_rules.yaml"
 WEBSITE_SYNC_PATH = DATA_DIR / "website_sync.yaml"
-TRACKED_ADS_SNAPSHOT_PATH = DATA_DIR / "ads_snapshot.json"
 
 ADS_SNAPSHOT_PATH = CACHE_DIR / "ads_snapshot.json"
 CURATED_PUBLICATIONS_PATH = CACHE_DIR / "publications_curated.json"

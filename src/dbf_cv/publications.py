@@ -30,6 +30,7 @@ from .paths import (
     SECOND_AUTHOR_TEX_PATH,
     SUMMARY_TEX_PATH,
 )
+from .render import ESCAPE_MAP
 
 HIGHLY_CITED_THRESHOLD = 100
 
@@ -47,17 +48,7 @@ RAW_TEX_MAP = {
     "≥": "$\\geq$",
 }
 
-ESCAPE_MAP = {
-    "&": "\\&",
-    "%": "\\%",
-    "$": "\\$",
-    "#": "\\#",
-    "_": "\\_",
-    "{": "\\{",
-    "}": "\\}",
-    "~": "\\textasciitilde{}",
-    "^": "\\^{}",
-}
+LATEX_TRANSLATION = str.maketrans(ESCAPE_MAP | RAW_TEX_MAP)
 
 JOURNAL_MAP = [
     ("astrophysical journal letters", "\\apjl"),
@@ -187,18 +178,7 @@ def normalize_arxiv(value: str | None) -> str:
 
 
 def latex_text(text: str | None) -> str:
-    if text is None:
-        return ""
-
-    rendered = []
-    for char in str(text):
-        if char in RAW_TEX_MAP:
-            rendered.append(RAW_TEX_MAP[char])
-        elif char in ESCAPE_MAP:
-            rendered.append(ESCAPE_MAP[char])
-        else:
-            rendered.append(char)
-    return "".join(rendered)
+    return "" if text is None else str(text).translate(LATEX_TRANSLATION)
 
 
 def format_display_date(raw: str | None) -> str:
@@ -551,11 +531,6 @@ def format_author_list(record: dict, my_position: int | None) -> str:
     return preview + "~\\textit{et al.}"
 
 
-def href_with_resume(url: str, text: str, highlighted: bool) -> str:
-    del highlighted
-    return f"\\href{{{url}}}{{{text}}}"
-
-
 def build_advisee_data(manifest: dict) -> tuple[dict, list[dict], dict[str, dict]]:
     categories = manifest["categories"]
     advisees = manifest["advisees"]
@@ -665,7 +640,6 @@ def format_publication(record: dict, index: int) -> str:
 
     label_tex = f"${''.join(label_symbols)}$" if label_symbols else ""
     item = f"\\item[{{\\color{{deemph}}\\scriptsize{label_tex}{index}}}]"
-    highlighted = False
 
     content = format_author_list(record, record.get("author_position"))
     title = latex_text(record.get("title"))
@@ -681,7 +655,7 @@ def format_publication(record: dict, index: int) -> str:
         title_link = url
 
     if title_link:
-        content += f", {href_with_resume(title_link, title, highlighted)}"
+        content += f", \\href{{{title_link}}}{{{title}}}"
     else:
         content += f", {title}"
 
@@ -702,15 +676,7 @@ def format_publication(record: dict, index: int) -> str:
         content += f", {year}"
 
     if arxiv:
-        content += (
-            " ("
-            + href_with_resume(
-                f"https://arxiv.org/abs/{arxiv}",
-                f"arXiv:{latex_text(arxiv)}",
-                highlighted,
-            )
-            + ")"
-        )
+        content += f" (\\href{{https://arxiv.org/abs/{arxiv}}}{{arXiv:{latex_text(arxiv)}}})"
 
     if citations > 0:
         citation_text = f"{citations} citations"
@@ -718,7 +684,7 @@ def format_publication(record: dict, index: int) -> str:
             citation_text = f"\\textbf{{{citations}}} citations"
 
         if url:
-            content += f" [{href_with_resume(url, citation_text, highlighted)}]"
+            content += f" [\\href{{{url}}}{{{citation_text}}}]"
         else:
             content += f" [{citation_text}]"
 
@@ -730,26 +696,13 @@ def compute_h_index(citations: Iterable[int]) -> int:
     return sum(value >= index + 1 for index, value in enumerate(ordered))
 
 
-def render_summary(ads_metrics: dict, scholar_metrics: dict | None, advisee_categories: dict) -> str:
+def render_summary(ads_metrics: dict, advisee_categories: dict) -> str:
     lines = [
         f"total publication count: {ads_metrics['total_papers']} --- "
         f"citations: {ads_metrics['total_citations']} --- "
         f"h-index: {ads_metrics['h_index']} "
         f"(\\textit{{{format_display_date(ads_metrics['updated_on'])}}})\\\\"
     ]
-
-    if scholar_metrics:
-        scholar_profile_url = scholar_metrics.get("profile_url")
-        scholar_label = (
-            f"\\href{{{scholar_profile_url}}}{{Google Scholar}}"
-            if scholar_profile_url
-            else "Google Scholar"
-        )
-        lines.append(
-            f"{scholar_label}: citations: {scholar_metrics['citations']} --- "
-            f"h-index: {scholar_metrics['h_index']} "
-            f"(\\textit{{{format_display_date(scholar_metrics['updated_on'])}}})\\\\"
-        )
 
     lines.append(render_advisee_legend(advisee_categories))
     return "\n".join(lines) + "\n"
@@ -976,15 +929,6 @@ def generate_publication_artifacts(
         "updated_on": ads_snapshot.fetched_at.date().isoformat(),
     }
 
-    scholar_metrics = overrides.get("google_scholar")
-    if scholar_metrics:
-        scholar_metrics = dict(scholar_metrics)
-        if "profile_id" in scholar_metrics and "profile_url" not in scholar_metrics:
-            scholar_metrics["profile_url"] = (
-                "https://scholar.google.com/citations?user="
-                f"{scholar_metrics['profile_id']}&hl=en"
-            )
-
     if orcid_summaries:
         curated_index = build_identifier_index(curated)
         orcid_audit["remaining_missing_from_curated"] = [
@@ -993,7 +937,7 @@ def generate_publication_artifacts(
             if not matches_identifier(summary, curated_index)
         ]
 
-    summary_tex = render_summary(ads_metrics, scholar_metrics, advisee_categories)
+    summary_tex = render_summary(ads_metrics, advisee_categories)
     SUMMARY_TEX_PATH.write_text(summary_tex, encoding="utf-8")
     ADVISING_TEX_PATH.write_text(
         render_advising(advising_entries),
@@ -1018,8 +962,6 @@ def generate_publication_artifacts(
         "ads_metrics": ads_metrics,
         "publications": curated,
     }
-    if scholar_metrics:
-        curated_payload["google_scholar_metrics"] = scholar_metrics
     CURATED_PUBLICATIONS_PATH.write_text(
         json.dumps(curated_payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
@@ -1045,8 +987,6 @@ def generate_publication_artifacts(
         ],
         "excluded": excluded,
     }
-    if scholar_metrics:
-        audit_payload["google_scholar_metrics"] = scholar_metrics
     PUBLICATIONS_AUDIT_PATH.write_text(
         json.dumps(audit_payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
@@ -1063,13 +1003,6 @@ def generate_publication_artifacts(
         f"- ADS curated total citations: {ads_metrics['total_citations']}",
         f"- ADS curated h-index: {ads_metrics['h_index']}",
     ]
-    if scholar_metrics:
-        audit_lines.extend(
-            [
-                f"- Google Scholar citations: {scholar_metrics['citations']}",
-                f"- Google Scholar h-index: {scholar_metrics['h_index']}",
-            ]
-        )
 
     audit_lines.extend(["", "## Included Counts", ""])
     for name, records in sections.items():

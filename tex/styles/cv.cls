@@ -26,10 +26,8 @@
 \definecolor{body}{HTML}{000000}
 \definecolor{sections}{HTML}{004181}
 \definecolor{subsections}{HTML}{666666}
-\definecolor{rules}{HTML}{CCCCCC}
 \definecolor{links}{HTML}{006767}
 \definecolor{deemph}{HTML}{666666}
-\definecolor{highlight}{HTML}{006767}
 
 %-----------------------------------------------------------------------------
 % Font
