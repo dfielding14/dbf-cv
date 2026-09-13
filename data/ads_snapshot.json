@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-06T16:38:43Z",
+  "fetched_at": "2026-09-13T17:11:34Z",
   "fields": [
     "id",
     "title",
@@ -218,7 +218,7 @@
         "Strom, Allison L."
       ],
       "bibcode": "2026ApJ..1003..155X",
-      "citations": 1,
+      "citations": 2,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ae63d1",
       "page": 155,
@@ -823,7 +823,7 @@
         "Henry, Alaina"
       ],
       "bibcode": "2025ApJ...981..171P",
-      "citations": 10,
+      "citations": 12,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ada606",
       "page": 171,
@@ -855,7 +855,7 @@
         "Sandstrom, Karin"
       ],
       "bibcode": "2025MNRAS.536.1799R",
-      "citations": 28,
+      "citations": 29,
       "doctype": "article",
       "doi": "10.1093/mnras/stae2705",
       "page": 1799,
@@ -1085,7 +1085,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2024ApJ...976..151V",
-      "citations": 16,
+      "citations": 17,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad81d5",
       "page": 151,
@@ -1109,7 +1109,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2024ApJ...976..150V",
-      "citations": 20,
+      "citations": 21,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad81d6",
       "page": 150,
@@ -1256,7 +1256,7 @@
         "Teyssier, Romain"
       ],
       "bibcode": "2024ApJ...975..151H",
-      "citations": 9,
+      "citations": 10,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad73a4",
       "page": 151,
@@ -1878,7 +1878,7 @@
         "Forbes, John C."
       ],
       "bibcode": "2023ApJ...956..118P",
-      "citations": 52,
+      "citations": 53,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acf3ea",
       "page": 118,
@@ -1986,7 +1986,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2023ApJ...949...21C",
-      "citations": 41,
+      "citations": 42,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acc4c7",
       "page": 21,
@@ -2335,7 +2335,7 @@
         "Wetzel, Andrew"
       ],
       "bibcode": "2021MNRAS.508.2979P",
-      "citations": 171,
+      "citations": 174,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2714",
       "page": 2979,
@@ -2380,7 +2380,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021MNRAS.507.2869S",
-      "citations": 42,
+      "citations": 41,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2240",
       "page": 2869,
@@ -2412,7 +2412,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021ApJ...911...88S",
-      "citations": 146,
+      "citations": 147,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abd776",
       "page": 88,
@@ -2505,7 +2505,7 @@
         "Starkenburg, Tjitske"
       ],
       "bibcode": "2020ApJ...905....4P",
-      "citations": 57,
+      "citations": 58,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abc3c1",
       "page": 4,
@@ -2530,7 +2530,7 @@
         "Hernquist, Lars"
       ],
       "bibcode": "2020ApJ...903L..34K",
-      "citations": 69,
+      "citations": 70,
       "doctype": "article",
       "doi": "10.3847/2041-8213/abc252",
       "page": "L34",
@@ -2715,7 +2715,7 @@
         "Pandya, Viraj"
       ],
       "bibcode": "2020ApJ...900...61K",
-      "citations": 149,
+      "citations": 150,
       "doctype": "article",
       "doi": "10.3847/1538-4357/aba962",
       "page": 61,
