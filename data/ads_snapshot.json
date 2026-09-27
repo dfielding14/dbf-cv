@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-20T17:13:33Z",
+  "fetched_at": "2026-09-27T18:02:12Z",
   "fields": [
     "id",
     "title",
@@ -16,8 +16,29 @@
     "bibcode"
   ],
   "query": "orcid:\"0000-0003-3806-8548\" OR author:\"Fielding, Drummond\" OR author:\"Fielding, Drummond B.\" OR author:\"Fielding, D. B.\" OR author:\"Fielding, D.\"",
-  "record_count": 163,
+  "record_count": 164,
   "records": [
+    {
+      "arxiv": "2609.29782",
+      "authors": [
+        "Mohapatra, Rajsekhar",
+        "Lancaster, Lachlan",
+        "Fielding, Drummond",
+        "Quataert, Eliot",
+        "Bryan, Greg L."
+      ],
+      "bibcode": "2026arXiv260929782M",
+      "citations": 0,
+      "doctype": "eprint",
+      "doi": null,
+      "page": null,
+      "pub": "arXiv e-prints",
+      "pubdate": "2026-09-00",
+      "title": "How Magnetic Fields Regulate Cooling and Mixing in Turbulent Radiative Mixing Layers",
+      "url": "http://adsabs.harvard.edu/abs/2026arXiv260929782M",
+      "volume": null,
+      "year": "2026"
+    },
     {
       "arxiv": "2605.03154",
       "authors": [
@@ -330,7 +351,7 @@
         "Wong, George N."
       ],
       "bibcode": "2026ApJS..283...27S",
-      "citations": 89,
+      "citations": 88,
       "doctype": "article",
       "doi": "10.3847/1538-4365/ae3717",
       "page": 27,
@@ -546,7 +567,7 @@
         "Fielding, Drummond"
       ],
       "bibcode": "2025MNRAS.542.1188P",
-      "citations": 0,
+      "citations": 1,
       "doctype": "article",
       "doi": "10.1093/mnras/staf1288",
       "page": 1188,
@@ -763,7 +784,7 @@
         "Klessen, Ralf S."
       ],
       "bibcode": "2025MNRAS.538.3068F",
-      "citations": 27,
+      "citations": 28,
       "doctype": "article",
       "doi": "10.1093/mnras/staf363",
       "page": 3068,
@@ -1225,7 +1246,7 @@
         "Tremonti, Christy A."
       ],
       "bibcode": "2024ApJ...975..263P",
-      "citations": 8,
+      "citations": 9,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad7b0c",
       "page": 263,
@@ -1449,7 +1470,7 @@
         "Kereš, Dušan"
       ],
       "bibcode": "2024MNRAS.532.2724S",
-      "citations": 23,
+      "citations": 22,
       "doctype": "article",
       "doi": "10.1093/mnras/stae1629",
       "page": 2724,
@@ -1630,7 +1651,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2024MNRAS.527.9683T",
-      "citations": 58,
+      "citations": 59,
       "doctype": "article",
       "doi": "10.1093/mnras/stad3793",
       "page": 9683,
@@ -1757,7 +1778,7 @@
         "Faucher-Giguère, Claude-André"
       ],
       "bibcode": "2024MNRAS.527..265R",
-      "citations": 20,
+      "citations": 21,
       "doctype": "article",
       "doi": "10.1093/mnras/stad3142",
       "page": 265,
@@ -2238,7 +2259,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2022ApJ...925..199A",
-      "citations": 66,
+      "citations": 67,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac3c48",
       "page": 199,
@@ -2735,7 +2756,7 @@
         "Jermyn, Adam S."
       ],
       "bibcode": "2020ApJ...894L..24F",
-      "citations": 196,
+      "citations": 197,
       "doctype": "article",
       "doi": "10.3847/2041-8213/ab8d2c",
       "page": "L24",
@@ -2815,7 +2836,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2019MNRAS.488.2549S",
-      "citations": 108,
+      "citations": 107,
       "doctype": "article",
       "doi": "10.1093/mnras/stz1859",
       "page": 2549,
@@ -3134,7 +3155,7 @@
         "Fielding, Drummond"
       ],
       "bibcode": "2019MNRAS.483.2465M",
-      "citations": 63,
+      "citations": 64,
       "doctype": "article",
       "doi": "10.1093/mnras/sty3273",
       "page": 2465,
