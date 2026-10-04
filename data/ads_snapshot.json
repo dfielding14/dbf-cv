@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-27T18:02:12Z",
+  "fetched_at": "2026-10-04T17:58:05Z",
   "fields": [
     "id",
     "title",
@@ -30,7 +30,7 @@
       "bibcode": "2026arXiv260929782M",
       "citations": 0,
       "doctype": "eprint",
-      "doi": null,
+      "doi": "10.48550/arXiv.2609.29782",
       "page": null,
       "pub": "arXiv e-prints",
       "pubdate": "2026-09-00",
@@ -1800,7 +1800,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2024ApJ...960..100S",
-      "citations": 57,
+      "citations": 58,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad09e1",
       "page": 100,
@@ -2220,7 +2220,7 @@
         "Tremmel, Michael"
       ],
       "bibcode": "2022ApJ...935...69B",
-      "citations": 35,
+      "citations": 36,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac7ebd",
       "page": 69,
@@ -2240,7 +2240,7 @@
         "Burkhart, Blakesley"
       ],
       "bibcode": "2022ApJ...932...88O",
-      "citations": 43,
+      "citations": 44,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac6c26",
       "page": 88,
@@ -2297,7 +2297,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2022ApJ...924...82F",
-      "citations": 166,
+      "citations": 168,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac2f41",
       "page": 82,
@@ -2573,7 +2573,7 @@
         "Werk, Jessica K."
       ],
       "bibcode": "2020ApJ...903...77B",
-      "citations": 108,
+      "citations": 109,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abbad2",
       "page": 77,
@@ -2736,7 +2736,7 @@
         "Pandya, Viraj"
       ],
       "bibcode": "2020ApJ...900...61K",
-      "citations": 150,
+      "citations": 151,
       "doctype": "article",
       "doi": "10.3847/1538-4357/aba962",
       "page": 61,
@@ -3258,7 +3258,7 @@
         "Faucher-Giguère, Claude-André"
       ],
       "bibcode": "2017MNRAS.470L..39F",
-      "citations": 99,
+      "citations": 100,
       "doctype": "article",
       "doi": "10.1093/mnrasl/slx072",
       "page": "L39",
