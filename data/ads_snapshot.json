@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-04T17:58:05Z",
+  "fetched_at": "2026-10-11T18:35:32Z",
   "fields": [
     "id",
     "title",
@@ -16,7 +16,7 @@
     "bibcode"
   ],
   "query": "orcid:\"0000-0003-3806-8548\" OR author:\"Fielding, Drummond\" OR author:\"Fielding, Drummond B.\" OR author:\"Fielding, D. B.\" OR author:\"Fielding, D.\"",
-  "record_count": 164,
+  "record_count": 165,
   "records": [
     {
       "arxiv": "2609.29782",
@@ -53,7 +53,7 @@
         "Hirschmann, Michaela"
       ],
       "bibcode": "2026MNRAS.551g1520S",
-      "citations": 2,
+      "citations": 3,
       "doctype": "article",
       "doi": "10.1093/mnras/stag1520",
       "page": "stag1520",
@@ -351,7 +351,7 @@
         "Wong, George N."
       ],
       "bibcode": "2026ApJS..283...27S",
-      "citations": 88,
+      "citations": 90,
       "doctype": "article",
       "doi": "10.3847/1538-4365/ae3717",
       "page": 27,
@@ -612,7 +612,7 @@
         "Philippov, Alexander A."
       ],
       "bibcode": "2025ApJ...990L..18K",
-      "citations": 12,
+      "citations": 13,
       "doctype": "article",
       "doi": "10.3847/2041-8213/adde55",
       "page": "L18",
@@ -1198,7 +1198,7 @@
         "Ho, Shirley"
       ],
       "bibcode": "2024arXiv241200568O",
-      "citations": 17,
+      "citations": 18,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2412.00568",
       "page": null,
@@ -1709,7 +1709,7 @@
         "Whalen, Kelly E."
       ],
       "bibcode": "2024Natur.625..459C",
-      "citations": 23,
+      "citations": 24,
       "doctype": "article",
       "doi": "10.1038/s41586-023-06752-8",
       "page": 459,
@@ -1873,7 +1873,7 @@
         "Ripperda, Bart"
       ],
       "bibcode": "2023MNRAS.525.4985K",
-      "citations": 81,
+      "citations": 84,
       "doctype": "article",
       "doi": "10.1093/mnras/stad2609",
       "page": 4985,
@@ -2007,7 +2007,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2023ApJ...949...21C",
-      "citations": 42,
+      "citations": 43,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acc4c7",
       "page": 21,
@@ -2356,7 +2356,7 @@
         "Wetzel, Andrew"
       ],
       "bibcode": "2021MNRAS.508.2979P",
-      "citations": 174,
+      "citations": 175,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2714",
       "page": 2979,
@@ -2401,7 +2401,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021MNRAS.507.2869S",
-      "citations": 41,
+      "citations": 42,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2240",
       "page": 2869,
@@ -2756,7 +2756,7 @@
         "Jermyn, Adam S."
       ],
       "bibcode": "2020ApJ...894L..24F",
-      "citations": 197,
+      "citations": 198,
       "doctype": "article",
       "doi": "10.3847/2041-8213/ab8d2c",
       "page": "L24",
@@ -2777,7 +2777,7 @@
         "Fielding, Drummond"
       ],
       "bibcode": "2020MNRAS.493.1461L",
-      "citations": 46,
+      "citations": 47,
       "doctype": "article",
       "doi": "10.1093/mnras/staa358",
       "page": 1461,
@@ -3351,7 +3351,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2016ApJ...827L..11O",
-      "citations": 119,
+      "citations": 120,
       "doctype": "article",
       "doi": "10.3847/2041-8205/827/1/L11",
       "page": "L11",
@@ -3622,7 +3622,7 @@
         "Tomasino, Rachael"
       ],
       "bibcode": "2012AJ....143..114S",
-      "citations": 68,
+      "citations": 69,
       "doctype": "article",
       "doi": "10.1088/0004-6256/143/5/114",
       "page": 114,
@@ -3777,6 +3777,29 @@
       "url": "http://adsabs.harvard.edu/abs/2006EneBu..38.1388V",
       "volume": "38",
       "year": "2006"
+    },
+    {
+      "arxiv": null,
+      "authors": [
+        "Tallyn, Ella",
+        "Koleva, Boriana",
+        "Logan, Brian",
+        "Fielding, Dan",
+        "Benford, Steve",
+        "Gelmini, Giulia",
+        "Madden, Neil"
+      ],
+      "bibcode": "2005LNCS.3805..179T",
+      "citations": 0,
+      "doctype": "inbook",
+      "doi": "10.1007/11590361_21",
+      "page": 179,
+      "pub": "Lecture Notes in Computer Science",
+      "pubdate": "2005-00-00",
+      "title": "Embodied Reporting Agents as an Approach to Creating Narratives from Live Virtual Worlds",
+      "url": "http://adsabs.harvard.edu/abs/2005LNCS.3805..179T",
+      "volume": "3805",
+      "year": "2005"
     },
     {
       "arxiv": null,
