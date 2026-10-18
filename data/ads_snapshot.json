@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-11T18:35:32Z",
+  "fetched_at": "2026-10-18T17:03:31Z",
   "fields": [
     "id",
     "title",
@@ -123,7 +123,7 @@
         "Bland-Hawthorn, Joss"
       ],
       "bibcode": "2026MNRAS.549g1059S",
-      "citations": 5,
+      "citations": 6,
       "doctype": "article",
       "doi": "10.1093/mnras/stag1059",
       "page": "stag1059",
@@ -326,7 +326,7 @@
         "Sommovigo, Laura"
       ],
       "bibcode": "2026MNRAS.547ag374B",
-      "citations": 0,
+      "citations": 1,
       "doctype": "article",
       "doi": "10.1093/mnras/stag374",
       "page": "stag374",
@@ -351,7 +351,7 @@
         "Wong, George N."
       ],
       "bibcode": "2026ApJS..283...27S",
-      "citations": 90,
+      "citations": 92,
       "doctype": "article",
       "doi": "10.3847/1538-4365/ae3717",
       "page": 27,
@@ -450,7 +450,7 @@
         "Weinberger, Rainer"
       ],
       "bibcode": "2025MNRAS.544.1390B",
-      "citations": 10,
+      "citations": 11,
       "doctype": "article",
       "doi": "10.1093/mnras/staf1720",
       "page": 1390,
@@ -653,7 +653,7 @@
         "Guo, Minghao"
       ],
       "bibcode": "2025ApJ...989..103M",
-      "citations": 4,
+      "citations": 5,
       "doctype": "article",
       "doi": "10.3847/1538-4357/adea6c",
       "page": 103,
@@ -1015,7 +1015,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2024MNRAS.535.3550S",
-      "citations": 23,
+      "citations": 24,
       "doctype": "article",
       "doi": "10.1093/mnras/stae2589",
       "page": 3550,
@@ -1277,7 +1277,7 @@
         "Teyssier, Romain"
       ],
       "bibcode": "2024ApJ...975..151H",
-      "citations": 10,
+      "citations": 11,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad73a4",
       "page": 151,
@@ -1391,7 +1391,7 @@
         "Steinwandel, Ulrich P."
       ],
       "bibcode": "2024ApJ...972...67K",
-      "citations": 22,
+      "citations": 23,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad59ab",
       "page": 67,
@@ -1757,7 +1757,7 @@
         "Li, Yuan"
       ],
       "bibcode": "2024MNRAS.527.1216S",
-      "citations": 43,
+      "citations": 44,
       "doctype": "article",
       "doi": "10.1093/mnras/stad3168",
       "page": 1216,
@@ -1986,7 +1986,7 @@
         "Philippov, Alexander A."
       ],
       "bibcode": "2023ApJ...949L...5F",
-      "citations": 44,
+      "citations": 43,
       "doctype": "article",
       "doi": "10.3847/2041-8213/accf1f",
       "page": "L5",
@@ -2323,7 +2323,7 @@
         "Sanchez-Gonzalez, Alvaro"
       ],
       "bibcode": "2021arXiv211215275S",
-      "citations": 77,
+      "citations": 79,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2112.15275",
       "page": null,
@@ -2433,7 +2433,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021ApJ...911...88S",
-      "citations": 147,
+      "citations": 148,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abd776",
       "page": 88,
@@ -2736,7 +2736,7 @@
         "Pandya, Viraj"
       ],
       "bibcode": "2020ApJ...900...61K",
-      "citations": 151,
+      "citations": 152,
       "doctype": "article",
       "doi": "10.3847/1538-4357/aba962",
       "page": 61,
@@ -2756,7 +2756,7 @@
         "Jermyn, Adam S."
       ],
       "bibcode": "2020ApJ...894L..24F",
-      "citations": 198,
+      "citations": 201,
       "doctype": "article",
       "doi": "10.3847/2041-8213/ab8d2c",
       "page": "L24",
@@ -2797,7 +2797,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2020MNRAS.492.6042S",
-      "citations": 80,
+      "citations": 81,
       "doctype": "article",
       "doi": "10.1093/mnras/staa198",
       "page": 6042,
@@ -3155,7 +3155,7 @@
         "Fielding, Drummond"
       ],
       "bibcode": "2019MNRAS.483.2465M",
-      "citations": 64,
+      "citations": 65,
       "doctype": "article",
       "doi": "10.1093/mnras/sty3273",
       "page": 2465,
@@ -3330,7 +3330,7 @@
         "Thompson, Todd A."
       ],
       "bibcode": "2017MNRAS.466.3810F",
-      "citations": 186,
+      "citations": 187,
       "doctype": "article",
       "doi": "10.1093/mnras/stw3326",
       "page": 3810,
@@ -3351,7 +3351,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2016ApJ...827L..11O",
-      "citations": 120,
+      "citations": 121,
       "doctype": "article",
       "doi": "10.3847/2041-8205/827/1/L11",
       "page": "L11",
