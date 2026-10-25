@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-18T17:03:31Z",
+  "fetched_at": "2026-10-25T17:22:32Z",
   "fields": [
     "id",
     "title",
@@ -16,7 +16,7 @@
     "bibcode"
   ],
   "query": "orcid:\"0000-0003-3806-8548\" OR author:\"Fielding, Drummond\" OR author:\"Fielding, Drummond B.\" OR author:\"Fielding, D. B.\" OR author:\"Fielding, D.\"",
-  "record_count": 165,
+  "record_count": 168,
   "records": [
     {
       "arxiv": "2609.29782",
@@ -371,7 +371,7 @@
         "Brüggen, Marcus"
       ],
       "bibcode": "2026arXiv260223416R",
-      "citations": 7,
+      "citations": 8,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2602.23416",
       "page": null,
@@ -693,7 +693,7 @@
         "Brüggen, Marcus"
       ],
       "bibcode": "2025A&A...699A..10R",
-      "citations": 16,
+      "citations": 17,
       "doctype": "article",
       "doi": "10.1051/0004-6361/202451303",
       "page": "A10",
@@ -784,7 +784,7 @@
         "Klessen, Ralf S."
       ],
       "bibcode": "2025MNRAS.538.3068F",
-      "citations": 28,
+      "citations": 29,
       "doctype": "article",
       "doi": "10.1093/mnras/staf363",
       "page": 3068,
@@ -1575,7 +1575,7 @@
         "Bullock, James"
       ],
       "bibcode": "2024MNRAS.530.1711S",
-      "citations": 54,
+      "citations": 55,
       "doctype": "article",
       "doi": "10.1093/mnras/stae824",
       "page": 1711,
@@ -1809,6 +1809,47 @@
       "title": "The Structure and Composition of Multiphase Galactic Winds in a Large Magellanic Cloud Mass Simulated Galaxy",
       "url": "http://adsabs.harvard.edu/abs/2024ApJ...960..100S",
       "volume": "960",
+      "year": "2024"
+    },
+    {
+      "arxiv": null,
+      "authors": [
+        "Fielding, Debbie A.",
+        "Everts, Liese",
+        "Littlewood, Nick A.",
+        "Pakeman, Robin"
+      ],
+      "bibcode": "2024dryd.data.4865F",
+      "citations": 0,
+      "doctype": "dataset",
+      "doi": "10.5061/DRYAD.DR554M2",
+      "page": 4865,
+      "pub": "Dryad Data Set",
+      "pubdate": "2024-00-00",
+      "title": "Data from: Long-term impacts of changed grazing regimes on the vegetation of heterogeneous upland grasslands",
+      "url": "http://adsabs.harvard.edu/abs/2024dryd.data.4865F",
+      "volume": null,
+      "year": "2024"
+    },
+    {
+      "arxiv": null,
+      "authors": [
+        "Pakeman, Robin",
+        "Bienkowski, Damian",
+        "Fielding, Debbie",
+        "Thiel, Andre",
+        "Evans, Darren"
+      ],
+      "bibcode": "2024dryd.data.1494P",
+      "citations": 0,
+      "doctype": "dataset",
+      "doi": "10.5061/DRYAD.X69P8CZV3",
+      "page": 1494,
+      "pub": "Dryad Data Set",
+      "pubdate": "2024-00-00",
+      "title": "Assessing the impacts of livestock grazing on upland bird breeding territories using drone surveys",
+      "url": "http://adsabs.harvard.edu/abs/2024dryd.data.1494P",
+      "volume": null,
       "year": "2024"
     },
     {
@@ -2192,7 +2233,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2022MNRAS.514.5056H",
-      "citations": 115,
+      "citations": 116,
       "doctype": "article",
       "doi": "10.1093/mnras/stac1603",
       "page": 5056,
@@ -2297,7 +2338,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2022ApJ...924...82F",
-      "citations": 168,
+      "citations": 169,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac2f41",
       "page": 82,
@@ -2401,7 +2442,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021MNRAS.507.2869S",
-      "citations": 42,
+      "citations": 43,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2240",
       "page": 2869,
@@ -2433,7 +2474,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021ApJ...911...88S",
-      "citations": 148,
+      "citations": 149,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abd776",
       "page": 88,
@@ -2497,7 +2538,7 @@
         "Yuan, Y."
       ],
       "bibcode": "2020ApJ...905...14B",
-      "citations": 32,
+      "citations": 33,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abc484",
       "page": 14,
@@ -2797,7 +2838,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2020MNRAS.492.6042S",
-      "citations": 81,
+      "citations": 82,
       "doctype": "article",
       "doi": "10.1093/mnras/staa198",
       "page": 6042,
@@ -2836,7 +2877,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2019MNRAS.488.2549S",
-      "citations": 107,
+      "citations": 108,
       "doctype": "article",
       "doi": "10.1093/mnras/stz1859",
       "page": 2549,
@@ -3488,6 +3529,25 @@
       "title": "Does nature conservation enhance ecosystem services delivery?",
       "url": "http://adsabs.harvard.edu/abs/2016EcoSv..17..152E",
       "volume": "17",
+      "year": "2016"
+    },
+    {
+      "arxiv": null,
+      "authors": [
+        "Etwire, Prince Maxwell",
+        "Kahui, Viktoria",
+        "Fielding, David"
+      ],
+      "bibcode": "2016agec.data.1615E",
+      "citations": 0,
+      "doctype": "dataset",
+      "doi": "10.22004/AG.ECON.260794",
+      "page": 1615,
+      "pub": "AgEcon Data Set",
+      "pubdate": "2016-00-00",
+      "title": "Impact of Climate Change on Ghana's Agriculture: a Structural Ricardian Analysis",
+      "url": "http://adsabs.harvard.edu/abs/2016agec.data.1615E",
+      "volume": null,
       "year": "2016"
     },
     {
