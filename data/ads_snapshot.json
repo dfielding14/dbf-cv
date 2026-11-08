@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-01T18:43:23Z",
+  "fetched_at": "2026-11-08T18:38:18Z",
   "fields": [
     "id",
     "title",
@@ -18,6 +18,64 @@
   "query": "orcid:\"0000-0003-3806-8548\" OR author:\"Fielding, Drummond\" OR author:\"Fielding, Drummond B.\" OR author:\"Fielding, D. B.\" OR author:\"Fielding, D.\"",
   "record_count": 168,
   "records": [
+    {
+      "arxiv": "2606.11323",
+      "authors": [
+        "Butsky, Iryna S.",
+        "Redshaw, Caleb",
+        "Lei, Minjie",
+        "Clark, Susan E.",
+        "Fielding, Drummond B."
+      ],
+      "bibcode": "2026ApJ..1011...69B",
+      "citations": 2,
+      "doctype": "article",
+      "doi": "10.3847/1538-4357/aeaba0",
+      "page": 69,
+      "pub": "The Astrophysical Journal",
+      "pubdate": "2026-11-00",
+      "title": "Phase-dependent Magnetic Coherence in the Turbulent Interstellar Medium",
+      "url": "http://adsabs.harvard.edu/abs/2026ApJ..1011...69B",
+      "volume": "1011",
+      "year": "2026"
+    },
+    {
+      "arxiv": "2604.06318",
+      "authors": [
+        "Pandya, Viraj",
+        "Bryan, Greg L.",
+        "Makinen, T. Lucas",
+        "Gabrielpillai, Austen",
+        "Carr, Christopher",
+        "Fielding, Drummond B.",
+        "Hernquist, Lars",
+        "Ho, Matthew",
+        "Iyer, Kartheik",
+        "Jespersen, Christian Kragh",
+        "Koudmani, Sophie",
+        "Laska, Marta",
+        "Lemos, Pablo",
+        "Lovell, Christopher C.",
+        "Perez, Lucia A.",
+        "Robinson, William F., Jr.",
+        "Somerville, Rachel S.",
+        "Starkenburg, Tjitske K.",
+        "Stiskalek, Richard",
+        "Terrazas, Bryan",
+        "Voit, G. Mark"
+      ],
+      "bibcode": "2026ApJ..1011...39P",
+      "citations": 6,
+      "doctype": "article",
+      "doi": "10.3847/1538-4357/aea55e",
+      "page": 39,
+      "pub": "The Astrophysical Journal",
+      "pubdate": "2026-11-00",
+      "title": "Introducing sapphire: Towards Hybrid Physics-informed, Data-driven Modeling of Galaxy Formation",
+      "url": "http://adsabs.harvard.edu/abs/2026ApJ..1011...39P",
+      "volume": "1011",
+      "year": "2026"
+    },
     {
       "arxiv": "2609.29782",
       "authors": [
@@ -123,7 +181,7 @@
         "Bland-Hawthorn, Joss"
       ],
       "bibcode": "2026MNRAS.549g1059S",
-      "citations": 9,
+      "citations": 8,
       "doctype": "article",
       "doi": "10.1093/mnras/stag1059",
       "page": "stag1059",
@@ -155,27 +213,6 @@
       "year": "2026"
     },
     {
-      "arxiv": "2606.11323",
-      "authors": [
-        "Butsky, Iryna S.",
-        "Redshaw, Caleb",
-        "Lei, Minjie",
-        "Clark, Susan E.",
-        "Fielding, Drummond B."
-      ],
-      "bibcode": "2026arXiv260611323B",
-      "citations": 2,
-      "doctype": "eprint",
-      "doi": "10.48550/arXiv.2606.11323",
-      "page": null,
-      "pub": "arXiv e-prints",
-      "pubdate": "2026-06-00",
-      "title": "Phase-dependent magnetic coherence in the turbulent interstellar medium",
-      "url": "http://adsabs.harvard.edu/abs/2026arXiv260611323B",
-      "volume": null,
-      "year": "2026"
-    },
-    {
       "arxiv": "2606.07741",
       "authors": [
         "Chen, Zirui",
@@ -186,7 +223,7 @@
         "Tan, Brent"
       ],
       "bibcode": "2026arXiv260607741C",
-      "citations": 3,
+      "citations": 4,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2606.07741",
       "page": null,
@@ -208,7 +245,7 @@
         "Kakoly, Aharon"
       ],
       "bibcode": "2026MNRAS.548ag717G",
-      "citations": 11,
+      "citations": 10,
       "doctype": "article",
       "doi": "10.1093/mnras/stag717",
       "page": "stag717",
@@ -276,43 +313,6 @@
       "year": "2026"
     },
     {
-      "arxiv": "2604.06318",
-      "authors": [
-        "Pandya, Viraj",
-        "Bryan, Greg L.",
-        "Makinen, T. Lucas",
-        "Gabrielpillai, Austen",
-        "Carr, Christopher",
-        "Fielding, Drummond B.",
-        "Hernquist, Lars",
-        "Ho, Matthew",
-        "Iyer, Kartheik",
-        "Jespersen, Christian Kragh",
-        "Koudmani, Sophie",
-        "Laska, Marta",
-        "Lemos, Pablo",
-        "Lovell, Christopher C.",
-        "Perez, Lucia A.",
-        "Robinson, William F., Jr.",
-        "Somerville, Rachel S.",
-        "Starkenburg, Tjitske K.",
-        "Stiskalek, Richard",
-        "Terrazas, Bryan",
-        "Voit, G. Mark"
-      ],
-      "bibcode": "2026arXiv260406318P",
-      "citations": 6,
-      "doctype": "eprint",
-      "doi": "10.48550/arXiv.2604.06318",
-      "page": null,
-      "pub": "arXiv e-prints",
-      "pubdate": "2026-04-00",
-      "title": "Introducing sapphire: Towards Hybrid Physics-Informed, Data-Driven Modeling of Galaxy Formation",
-      "url": "http://adsabs.harvard.edu/abs/2026arXiv260406318P",
-      "volume": null,
-      "year": "2026"
-    },
-    {
       "arxiv": null,
       "authors": [
         "Bennett, Jake S.",
@@ -326,7 +326,7 @@
         "Sommovigo, Laura"
       ],
       "bibcode": "2026MNRAS.547ag374B",
-      "citations": 2,
+      "citations": 1,
       "doctype": "article",
       "doi": "10.1093/mnras/stag374",
       "page": "stag374",
@@ -351,7 +351,7 @@
         "Wong, George N."
       ],
       "bibcode": "2026ApJS..283...27S",
-      "citations": 115,
+      "citations": 117,
       "doctype": "article",
       "doi": "10.3847/1538-4365/ae3717",
       "page": 27,
@@ -450,7 +450,7 @@
         "Weinberger, Rainer"
       ],
       "bibcode": "2025MNRAS.544.1390B",
-      "citations": 13,
+      "citations": 12,
       "doctype": "article",
       "doi": "10.1093/mnras/staf1720",
       "page": 1390,
@@ -612,7 +612,7 @@
         "Philippov, Alexander A."
       ],
       "bibcode": "2025ApJ...990L..18K",
-      "citations": 19,
+      "citations": 18,
       "doctype": "article",
       "doi": "10.3847/2041-8213/adde55",
       "page": "L18",
@@ -653,7 +653,7 @@
         "Guo, Minghao"
       ],
       "bibcode": "2025ApJ...989..103M",
-      "citations": 5,
+      "citations": 4,
       "doctype": "article",
       "doi": "10.3847/1538-4357/adea6c",
       "page": 103,
@@ -693,7 +693,7 @@
         "Brüggen, Marcus"
       ],
       "bibcode": "2025A&A...699A..10R",
-      "citations": 18,
+      "citations": 17,
       "doctype": "article",
       "doi": "10.1051/0004-6361/202451303",
       "page": "A10",
@@ -784,7 +784,7 @@
         "Klessen, Ralf S."
       ],
       "bibcode": "2025MNRAS.538.3068F",
-      "citations": 32,
+      "citations": 31,
       "doctype": "article",
       "doi": "10.1093/mnras/staf363",
       "page": 3068,
@@ -1015,7 +1015,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2024MNRAS.535.3550S",
-      "citations": 25,
+      "citations": 24,
       "doctype": "article",
       "doi": "10.1093/mnras/stae2589",
       "page": 3550,
@@ -1106,7 +1106,7 @@
         "Somerville, Rachel S."
       ],
       "bibcode": "2024ApJ...976..151V",
-      "citations": 18,
+      "citations": 17,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad81d5",
       "page": 151,
@@ -1277,7 +1277,7 @@
         "Teyssier, Romain"
       ],
       "bibcode": "2024ApJ...975..151H",
-      "citations": 12,
+      "citations": 11,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad73a4",
       "page": 151,
@@ -1391,7 +1391,7 @@
         "Steinwandel, Ulrich P."
       ],
       "bibcode": "2024ApJ...972...67K",
-      "citations": 25,
+      "citations": 23,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ad59ab",
       "page": 67,
@@ -1443,7 +1443,7 @@
         "Trau, Matt"
       ],
       "bibcode": "2024AdvSc..1101818Z",
-      "citations": 13,
+      "citations": 15,
       "doctype": "article",
       "doi": "10.1002/advs.202401818",
       "page": 2401818,
@@ -1470,7 +1470,7 @@
         "Kereš, Dušan"
       ],
       "bibcode": "2024MNRAS.532.2724S",
-      "citations": 24,
+      "citations": 25,
       "doctype": "article",
       "doi": "10.1093/mnras/stae1629",
       "page": 2724,
@@ -1575,7 +1575,7 @@
         "Bullock, James"
       ],
       "bibcode": "2024MNRAS.530.1711S",
-      "citations": 59,
+      "citations": 58,
       "doctype": "article",
       "doi": "10.1093/mnras/stae824",
       "page": 1711,
@@ -1614,7 +1614,7 @@
         "Brüggen, Marcus"
       ],
       "bibcode": "2024A&A...684L..16R",
-      "citations": 25,
+      "citations": 24,
       "doctype": "article",
       "doi": "10.1051/0004-6361/202348786",
       "page": "L16",
@@ -1709,7 +1709,7 @@
         "Whalen, Kelly E."
       ],
       "bibcode": "2024Natur.625..459C",
-      "citations": 27,
+      "citations": 28,
       "doctype": "article",
       "doi": "10.1038/s41586-023-06752-8",
       "page": 459,
@@ -1757,7 +1757,7 @@
         "Li, Yuan"
       ],
       "bibcode": "2024MNRAS.527.1216S",
-      "citations": 49,
+      "citations": 47,
       "doctype": "article",
       "doi": "10.1093/mnras/stad3168",
       "page": 1216,
@@ -1914,7 +1914,7 @@
         "Ripperda, Bart"
       ],
       "bibcode": "2023MNRAS.525.4985K",
-      "citations": 92,
+      "citations": 91,
       "doctype": "article",
       "doi": "10.1093/mnras/stad2609",
       "page": 4985,
@@ -1989,7 +1989,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2023arXiv230703228A",
-      "citations": 24,
+      "citations": 23,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2307.03228",
       "page": null,
@@ -2008,7 +2008,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2023ApJ...950...91C",
-      "citations": 30,
+      "citations": 29,
       "doctype": "article",
       "doi": "10.3847/1538-4357/acc73f",
       "page": 91,
@@ -2027,7 +2027,7 @@
         "Philippov, Alexander A."
       ],
       "bibcode": "2023ApJ...949L...5F",
-      "citations": 46,
+      "citations": 47,
       "doctype": "article",
       "doi": "10.3847/2041-8213/accf1f",
       "page": "L5",
@@ -2072,7 +2072,7 @@
         "Trau, Matt"
       ],
       "bibcode": "2023AdvSc..1004207L",
-      "citations": 12,
+      "citations": 13,
       "doctype": "article",
       "doi": "10.1002/advs.202204207",
       "page": 2204207,
@@ -2233,7 +2233,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2022MNRAS.514.5056H",
-      "citations": 122,
+      "citations": 120,
       "doctype": "article",
       "doi": "10.1093/mnras/stac1603",
       "page": 5056,
@@ -2338,7 +2338,7 @@
         "Bryan, Greg L."
       ],
       "bibcode": "2022ApJ...924...82F",
-      "citations": 177,
+      "citations": 173,
       "doctype": "article",
       "doi": "10.3847/1538-4357/ac2f41",
       "page": 82,
@@ -2364,7 +2364,7 @@
         "Sanchez-Gonzalez, Alvaro"
       ],
       "bibcode": "2021arXiv211215275S",
-      "citations": 91,
+      "citations": 92,
       "doctype": "eprint",
       "doi": "10.48550/arXiv.2112.15275",
       "page": null,
@@ -2397,7 +2397,7 @@
         "Wetzel, Andrew"
       ],
       "bibcode": "2021MNRAS.508.2979P",
-      "citations": 179,
+      "citations": 180,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2714",
       "page": 2979,
@@ -2442,7 +2442,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021MNRAS.507.2869S",
-      "citations": 45,
+      "citations": 44,
       "doctype": "article",
       "doi": "10.1093/mnras/stab2240",
       "page": 2869,
@@ -2474,7 +2474,7 @@
         "Hopkins, Philip F."
       ],
       "bibcode": "2021ApJ...911...88S",
-      "citations": 158,
+      "citations": 157,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abd776",
       "page": 88,
@@ -2538,7 +2538,7 @@
         "Yuan, Y."
       ],
       "bibcode": "2020ApJ...905...14B",
-      "citations": 36,
+      "citations": 34,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abc484",
       "page": 14,
@@ -2567,7 +2567,7 @@
         "Starkenburg, Tjitske"
       ],
       "bibcode": "2020ApJ...905....4P",
-      "citations": 58,
+      "citations": 57,
       "doctype": "article",
       "doi": "10.3847/1538-4357/abc3c1",
       "page": 4,
@@ -2707,7 +2707,7 @@
         "Zhang, Yin-Fang"
       ],
       "bibcode": "2020WoDev.13405044O",
-      "citations": 50,
+      "citations": 51,
       "doctype": "article",
       "doi": "10.1016/j.worlddev.2020.105044",
       "page": 105044,
@@ -2777,7 +2777,7 @@
         "Pandya, Viraj"
       ],
       "bibcode": "2020ApJ...900...61K",
-      "citations": 157,
+      "citations": 155,
       "doctype": "article",
       "doi": "10.3847/1538-4357/aba962",
       "page": 61,
@@ -2797,7 +2797,7 @@
         "Jermyn, Adam S."
       ],
       "bibcode": "2020ApJ...894L..24F",
-      "citations": 216,
+      "citations": 211,
       "doctype": "article",
       "doi": "10.3847/2041-8213/ab8d2c",
       "page": "L24",
@@ -2818,7 +2818,7 @@
         "Fielding, Drummond"
       ],
       "bibcode": "2020MNRAS.493.1461L",
-      "citations": 48,
+      "citations": 49,
       "doctype": "article",
       "doi": "10.1093/mnras/staa358",
       "page": 1461,
@@ -2838,7 +2838,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2020MNRAS.492.6042S",
-      "citations": 87,
+      "citations": 83,
       "doctype": "article",
       "doi": "10.1093/mnras/staa198",
       "page": 6042,
@@ -2877,7 +2877,7 @@
         "Quataert, Eliot"
       ],
       "bibcode": "2019MNRAS.488.2549S",
-      "citations": 113,
+      "citations": 112,
       "doctype": "article",
       "doi": "10.1093/mnras/stz1859",
       "page": 2549,
@@ -3371,7 +3371,7 @@
         "Thompson, Todd A."
       ],
       "bibcode": "2017MNRAS.466.3810F",
-      "citations": 193,
+      "citations": 192,
       "doctype": "article",
       "doi": "10.1093/mnras/stw3326",
       "page": 3810,
@@ -3392,7 +3392,7 @@
         "Fielding, Drummond B."
       ],
       "bibcode": "2016ApJ...827L..11O",
-      "citations": 126,
+      "citations": 124,
       "doctype": "article",
       "doi": "10.3847/2041-8205/827/1/L11",
       "page": "L11",
